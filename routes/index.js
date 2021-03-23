@@ -38,43 +38,6 @@ async function getJSON()  {
     }
 }
 
-const https = require('https')
-const jsonUrl = 'https://pkgstore.datahub.io/36661def37f62e4130670ab75e06465a/oscars-nominees-and-winners/data_json/data/d3c23178ad964c76c8ce0ed81762ed7b/data_json.json'
-function get_json(url, callback) {
-    https.get(url, function(res) {
-        var body = '';
-        res.on('data', function(chunk) {
-            body += chunk;
-        });
-
-        res.on('end', function() {
-            var response = JSON.parse(body);
-            callback(response);
-        });
-    });
-}
-
-var data = get_json(jsonUrl, function (resp) {
-    console.log(resp);
-    return resp;
-});
-
-
-
-
-
-// const url = 'https://pkgstore.datahub.io/36661def37f62e4130670ab75e06465a/oscars-nominees-and-winners/data_json/data/d3c23178ad964c76c8ce0ed81762ed7b/data_json.json'
-// // const { JSDOM } = require( "jsdom" );
-// // const { window } = new JSDOM( "" );
-// // const $ = require( "jquery" )( window );
-// //
-// // $.getJSON(url, function(data) {
-// //     console.log(data);
-// // })
-// fetch('./data.json')
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-
 
 
 
