@@ -3,3 +3,10 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  #rawJSON-id This is a div
+  input#searchbar-id(type=search placeholder="Search for movie title" name=q)
+  button Search
+  button#helloButton(type=button) Hello
+  #searchtext This is text that can be changed with the Search function
+
+  script(type = module src='/javascripts/frontend.js')
