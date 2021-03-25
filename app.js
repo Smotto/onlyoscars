@@ -38,4 +38,46 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const {Dataset} = require('data.js')
+const fs = require('fs')
+const data_path = 'https://datahub.io/rufuspollock/oscars-nominees-and-winners/datapackage.json'
+// We're using self-invoking function here as we want to use async-await syntax:
+async function getJSON()  {
+  let counter = 0;
+  const dataset = await Dataset.load(data_path)
+  // get list of all resources:
+  for (const id in dataset.resources) {
+    console.log(dataset.resources[id]._descriptor.name)
+  }
+  // get all tabular data(if exists any)
+  for (const id in dataset.resources) {
+    if (dataset.resources[id]._descriptor.format === "json") {
+      const file = dataset.resources[id]
+      // Get a raw stream
+      const stream = await file.stream()
+      // entire file as a buffer (be careful with large files!)
+      const buffer = await file.buffer
+      // print data
+      let x = buffer.toString()
+      let y = JSON.parse(x)
+      console.log(y)
+      counter++;
+      // Needs to run twice before we return
+      if(counter === 2)
+      {
+        try {
+          fs.writeFileSync('./moviedata.json', JSON.stringify(y))
+          console.log("File Written Successfully")
+          //file written successfully
+        } catch (err) {
+          console.error(err)
+        }
+        return y;
+      }
+    }
+  }
+}
+
+app.locals.moviedata = require('./moviedata.json');
+
 module.exports = app;
