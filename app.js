@@ -63,21 +63,21 @@ async function getJSON()  {
       console.log(y)
       counter++;
       // Needs to run twice before we return
-      if(counter === 2)
-      {
-        try {
-          fs.writeFileSync('./moviedata.json', JSON.stringify(y))
-          console.log("File Written Successfully")
+      // JSON.stringify(y)
+      if(counter === 2) {
+        fs.writeFile("./bin/moviedata.json", JSON.stringify(y), err => {
+          if (err) {
+            console.error(err)
+            return
+          }
           //file written successfully
-        } catch (err) {
-          console.error(err)
-        }
-        return y;
+        })
       }
     }
   }
 }
+getJSON()
 
-app.locals.moviedata = require('./moviedata.json');
+// app.locals.moviedata = "./bin/moviedata.json";
 
 module.exports = app;
