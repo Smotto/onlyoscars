@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+const  moviedata  = require('./bin/moviedata.json')
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -36,6 +36,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  res.render('index',  moviedata )
 });
 
 const {Dataset} = require('data.js')
@@ -66,8 +67,9 @@ async function getJSON()  {
       if(counter === 2)
       {
         try {
-          fs.writeFileSync('./moviedata.json', JSON.stringify(y))
+          fs.writeFileSync('./bin/moviedata.json', JSON.stringify(y))
           console.log("File Written Successfully")
+          app.locals.moviedata = require('./bin/moviedata.json');
           //file written successfully
         } catch (err) {
           console.error(err)
@@ -77,7 +79,6 @@ async function getJSON()  {
     }
   }
 }
-
-app.locals.moviedata = require('./moviedata.json');
+getJSON()
 
 module.exports = app;
