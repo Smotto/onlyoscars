@@ -7,6 +7,10 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const {Dataset} = require('data.js')
+const fs = require('fs')
+const data_path = 'https://datahub.io/rufuspollock/oscars-nominees-and-winners/datapackage.json'
+
 var app = express();
 
 // view engine setup
@@ -21,11 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-const  moviedata  = require('./bin/moviedata.json')
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+upsertJSON();
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -36,14 +41,11 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-  res.render('index',  moviedata )
+  res.render('index', app.locals.moviedata)
 });
 
-const {Dataset} = require('data.js')
-const fs = require('fs')
-const data_path = 'https://datahub.io/rufuspollock/oscars-nominees-and-winners/datapackage.json'
-// We're using self-invoking function here as we want to use async-await syntax:
-async function getJSON()  {
+/* create/update JSON file on server start */
+async function upsertJSON()  {
   let counter = 0;
   const dataset = await Dataset.load(data_path)
   // get list of all resources:
@@ -63,22 +65,22 @@ async function getJSON()  {
       let y = JSON.parse(x)
       console.log(y)
       counter++;
-      // Needs to run twice before we return
+      // Needs to loop through once first, then we care about the data.
       if(counter === 2)
       {
         try {
           fs.writeFileSync('./bin/moviedata.json', JSON.stringify(y))
           console.log("File Written Successfully")
+          fs.closeSync(0);
           app.locals.moviedata = require('./bin/moviedata.json');
           //file written successfully
         } catch (err) {
           console.error(err)
+          return;
         }
-        return y;
       }
     }
   }
 }
-getJSON()
 
 module.exports = app;
