@@ -6,7 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+/* New Routers */
+var specificPageRouter = require('./routes/specificPage');
+var categoryRouter = require('./routes/category');
 
+/* Requirements for JSON data */
 const {Dataset} = require('data.js')
 const fs = require('fs')
 const data_path = 'https://datahub.io/rufuspollock/oscars-nominees-and-winners/datapackage.json'
@@ -25,6 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+/* New Router Usage */
+app.use('/api/specificPage', specificPageRouter);
+app.use('/api/category', categoryRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -41,7 +48,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-  res.render('index', app.locals.moviedata)
 });
 
 /* create/update JSON file on server start */
