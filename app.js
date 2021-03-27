@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 /* New Routers */
 var specificPageRouter = require('./routes/specificPage');
 var categoryRouter = require('./routes/category');
+var winnerRouter = require('./routes/winner');
+var yearRouter = require('./routes/year');
 
 /* Requirements for JSON data */
 const {Dataset} = require('data.js')
@@ -32,6 +34,8 @@ app.use('/users', usersRouter);
 /* New Router Usage */
 app.use('/api/specificPage', specificPageRouter);
 app.use('/api/category', categoryRouter);
+app.use('/api/winner', winnerRouter);
+app.use('/api/year', yearRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
