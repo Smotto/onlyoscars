@@ -8,6 +8,7 @@ rawJSONData.innerText = "This should be changed now."
 document.getElementById("searchbar-id").addEventListener("search", function()
 {
     // TODO: Do some guessing for the user based on input chars
+
 });
 
 /* Search BUTTON */
@@ -15,6 +16,9 @@ document.getElementById("search-button").addEventListener("click", function()
 {
     document.getElementById("searchtext").innerText =
         document.getElementById("searchbar-id").value;
+
+    // TODO: Fetch request using get with the value inside the search bar.
+
 });
 
 // Example POST method implementation:

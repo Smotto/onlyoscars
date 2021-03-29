@@ -2,24 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 /* GET request */
-router.get('/', function(req, res, next) {
-    console.log("GET Request Received for: Category.");
-    console.log("This is the body of the request: " + req.body.info);
-
-    res.render('index', { title: 'Displaying Categories', body: "category data should be in the body?"});
-});
-
-/* GET request */
 router.get('/:category', function(req, res, next) {
     console.log("GET Request Received for: Specific Page.");
-    let mineNow = req.params.category.toUpperCase();
-    console.log(mineNow);
+    let temp_category = req.params.category.toUpperCase();
+
     function addFindings()
     {
         let movieDataList = [];
         for(let element in req.app.locals.moviedata)
         {
-            if(req.app.locals.moviedata[element].category === mineNow)
+            if(req.app.locals.moviedata[element].category === temp_category)
             {
                 movieDataList.push(JSON.stringify(req.app.locals.moviedata[element]));
             }
