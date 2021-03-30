@@ -7,7 +7,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 /* New Routers */
-var specificPageRouter = require('./routes/specificPage');
 var categoryRouter = require('./routes/category');
 var yearRouter = require('./routes/year');
 var winnerRouter = require('./routes/winner');
@@ -32,7 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 /* New Router Usage */
-app.use('/api/specificPage', specificPageRouter);
 app.use('/api/category/', categoryRouter);
 app.use('/api/category/', yearRouter);
 app.use('/api/category/', winnerRouter);
