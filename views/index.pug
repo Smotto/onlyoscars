@@ -1,15 +1,26 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  #rawJSON-id This is a div
-  input#searchbar-id(type=search placeholder="Search for movie title" name=q)
-  button#search-button Search
-  #searchtext This is text that can be changed with the Search function
-  body This should be a #{body} of data.
-  // TODO: Filter Movie Data
-  p #{JSON.stringify(moviedata)}
+  .body
+      .head
+        h1#ootitle= title
+      .welcome
+        p Welcome to #{title}
+          //#rawJSON-id This is a div
+
+          //input#searchbar-id(type=search placeholder="Search for movie title" name=q )
+          //ul#charactersList
+          //button#search-button Search
+          //#searchtext This is text that can be changed with the Search function
+          //body This should be a #{body} of data.
+      .wrapper
+        .search-input
+            input#searchbar-id(type='text' placeholder='Enter and Select Year')
+            .autocomplete-box
+                ul
+            //button.button#yearSelectButton Select
+      var#moviedataJSON #{JSON.stringify(moviedata)}
+
 
   script(type = module src='/javascripts/frontend.js')
 

@@ -1,8 +1,85 @@
-body {
+
+html, body {
   padding: 50px;
   font: 28px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #000000;
+  height: 100%;
+}
+.head #ootitle{
+  height: 40px;
+  text-align: center;
+  color: #ffd700;
+
+}
+.welcome{
+  text-align: center;
+  padding-top: 75px;
+  font-size: 20pt;
+  color: #ffd700;
 }
 
-a {
-  color: #00B7FF;
+/*a {*/
+/*  color: #00b7ff;*/
+/*}*/
+
+.wrapper{
+  max-width: 450px;
+  margin: 150px auto;
+  text-align: center;
 }
+
+.wrapper .search-input{
+  background: #ffffff;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.1);
+}
+
+.search-input #searchbar-id {
+  height: 55px;
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 60px 0 20px;
+  font-size: 18px;
+  box-shadow: 0px 1px 5px rgba(0,0,0,.1);
+}
+
+.search-input .autocomplete-box{
+  padding: 0px;
+  max-height: 280px;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.search-input.active .autocomplete-box{
+  padding: 10px 8px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.autocomplete-box li{
+  list-style: none;
+  padding: 8px 12px;
+  width: 100%;
+  cursor: default;
+  border-radius: 3px;
+  display: none;
+}
+
+.search-input.active .autocomplete-box li{
+  display: block;
+}
+
+.autocomplete-box li:hover{
+  background: #efefef;
+}
+
+#moviedataJSON{
+  display: none;
+}
+
+
+

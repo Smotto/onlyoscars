@@ -71,13 +71,13 @@ async function upsertJSON()  {
       // print data
       let x = buffer.toString()
       let y = JSON.parse(x)
-      console.log(y)
+      //console.log(y)
       counter++;
       // Needs to loop through once first, then we care about the data.
       if(counter === 2)
       {
         try {
-          fs.writeFileSync('./bin/moviedata.json', JSON.stringify(y))
+          fs.writeFileSync('./moviedata.json', JSON.stringify(y))
           console.log("File Written Successfully")
           fs.closeSync(0);
           app.locals.moviedata = require('./bin/moviedata.json');
