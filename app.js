@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var categoryRouter = require('./routes/category');
 var yearRouter = require('./routes/year');
 var winnerRouter = require('./routes/winner');
+var queryRouter = require('./routes/query');
 
 /* Requirements for JSON data */
 const {Dataset} = require('data.js')
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 /* New Router Usage */
+app.use('/api/', queryRouter);
 app.use('/api/category/', categoryRouter);
 app.use('/api/category/', yearRouter);
 app.use('/api/category/', winnerRouter);
