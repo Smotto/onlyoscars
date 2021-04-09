@@ -20,7 +20,10 @@ block content
                 ul
             //button.button#yearSelectButton Select
       var#moviedataJSON #{JSON.stringify(moviedata)}
+      .dropdowngroup
+          select#category.form(name='default')
+      var#category-name This should change when category is selected
+      button#SearchButton Search Movies
 
-
-  script(type = module src='/javascripts/frontend.js')
+      script(type = module src='/javascripts/frontend.js')
 
