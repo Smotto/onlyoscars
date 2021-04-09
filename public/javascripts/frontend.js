@@ -80,7 +80,7 @@ categoryDropdown()
 document.getElementById("SearchButton").onclick = function() {
     let selectionID = document.getElementById("category");
     let chosenCategory = selectionID.options[selectionID.selectedIndex].text;
-    let textToBeSent = document.getElementById("category-name").innerText = chosenCategory;
+    let textToBeSent = document.getElementById("category-name").innerText = chosenCategory
     if (inputBox.value !== "") {
         textToBeSent += "/year/" + inputBox.value;
     }
