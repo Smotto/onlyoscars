@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET request */
 router.get('/:category', function (req, res, next) {
     console.log("GET Request Received for: Specific Page.");
-    let temp_category = req.params.category.toUpperCase();
+    let temp_category = req.params.category;
 
     function addFindings() {
         let movieDataList = [];

@@ -80,7 +80,11 @@ categoryDropdown()
 document.getElementById("SearchButton").onclick = function() {
     let selectionID = document.getElementById("category");
     let chosenCategory = selectionID.options[selectionID.selectedIndex].text;
-    document.getElementById("category-name").innerText = chosenCategory;
+    let textToBeSent = document.getElementById("category-name").innerText = chosenCategory;
+    if (inputBox.value !== "") {
+        textToBeSent += "/year/" + inputBox.value;
+    }
+    window.location.href = (window.location + "api/category/" + textToBeSent);
 }
 
 
@@ -90,9 +94,7 @@ document.getElementById("SearchButton").onclick = function() {
 //     document.getElementById("searchtext").innerText =
 //         document.getElementById("searchbar-id").value;
 //
-//     // TODO: Fetch request using get with the value inside the search bar.
 //
-// });
 
 // Example POST method implementation:
 // async function postData(url = '', data = {}) {
