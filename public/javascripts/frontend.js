@@ -80,7 +80,7 @@ categoryDropdown()
 document.getElementById("SearchButton").onclick = function() {
     let selectionID = document.getElementById("category");
     let chosenCategory = selectionID.options[selectionID.selectedIndex].text;
-    document.getElementById("category-name").innerText = chosenCategory;
+    document.getElementById("category-name").innerText = chosenCategory + inputBox.value;
 }
 
 
