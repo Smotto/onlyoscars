@@ -4,8 +4,9 @@ block content
   .body
       .head
         h1#ootitle= title
-      .welcome
-        p Welcome to #{title}
+            img(src='./img/oscars.png')
+      .chooseYear
+        p Choose Year
           //#rawJSON-id This is a div
 
           //input#searchbar-id(type=search placeholder="Search for movie title" name=q )
@@ -21,9 +22,11 @@ block content
             //button.button#yearSelectButton Select
       var#moviedataJSON #{JSON.stringify(moviedata)}
       .dropdowngroup
+          p#select-category-text Select Category
           select#category.form(name='default')
+      i.fa.fa-search#SearchButton
       var#category-name This should change when category is selected
-      button#SearchButton Search Movies
+
 
       script(type = module src='/javascripts/frontend.js')
-
+      link(href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' rel='stylesheet')

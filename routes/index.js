@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
     }
     return movieDataList
   }
-  res.render('index', { title: 'Only Oscars', var: addMovieTitle()});
+  res.render('index', { title: 'Only', var: addMovieTitle()});
 
 });
 
