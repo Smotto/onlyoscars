@@ -12,9 +12,8 @@ img{
 .head #ootitle{
   text-align: center;
   font-family: "Futura" ;
-  padding-top: 0px ;
   font-size: 80pt;
-  color: #ffd700;
+  color: #b19330;
   height: 200px;
   background-image: linear-gradient(to right, transparent, #394431);
 
@@ -23,6 +22,9 @@ img{
   font-size: 35pt;
   font-family: "Helvetica Neue";
   color: #9d9999;
+  float: left;
+  padding-bottom: 11px;
+
 }
 
 .wrapper{
@@ -117,5 +119,7 @@ img{
   font-size: 35pt;
   font-family: "Helvetica Neue";
   color: #9d9999;
+  padding-top: 50px;
   padding-bottom: 11px;
+  float: left;
 }
