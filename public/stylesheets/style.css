@@ -123,3 +123,10 @@ img{
   padding-bottom: 11px;
   float: left;
 }
+
+div {
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+}

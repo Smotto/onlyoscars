@@ -16,7 +16,7 @@ router.get('/:category', function (req, res, next) {
         return movieDataList;
     }
 
-    res.render('specificPage', {title: 'Specific Page', body: addFindings()});
+    res.render('specificPage', {div: addFindings()});
 });
 
 module.exports = router;
