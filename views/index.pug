@@ -5,17 +5,19 @@ block content
         .head
             h1#ootitle= title
                 img(src='./img/oscars.png')
-        .wrapper
-            .chooseYear
-                p Choose Year
-            .search-input
-                input#searchbar-id(type='text' placeholder='Enter and Select Year')
-                .autocomplete-box
-                    ul
-            .dropdowngroup
-                p#select-category-text Select Category
-                select#category.form(name='default')
+        .position
+            .wrapper
+                .chooseYear
+                    p Choose Year
+                .search-input
+                    input#searchbar-id(type='text' placeholder='Enter and Select Year')
+                    .autocomplete-box
+                        ul
+                .dropdowngroup
+                    p#select-category-text Select Category
+                    select#category.form(name='default')
             i.fa.fa-search#SearchButton
+
         var#moviedataJSON(hidden='true') #{JSON.stringify(moviedata)}
         var#category-name
         script(type = module src='/javascripts/frontend.js')
