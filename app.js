@@ -84,37 +84,37 @@ async function getData(url = '') {
 
 /* create/update JSON file on server start */
 async function upsertJSON() {
-    let datasetCounter = 0;
-    let doWeHaveToPayCounter = 0;
-    const dataset = await Dataset.load(data_path)
-    // get list of all resources:
-    for (const id in dataset.resources) {
-        console.log(dataset.resources[id]._descriptor.name)
-    }
-    // get all tabular data(if exists any)
-    for (const id in dataset.resources) {
-        if (dataset.resources[id]._descriptor.format === "json") {
-            const file = dataset.resources[id]
-            // Get a raw stream
-            const stream = await file.stream()
-            // entire file as a buffer (be careful with large files!)
-            const buffer = await file.buffer
-            // The file is buffered, and once done is converted to a string (from 0's and 1's to something readable)
-            let rawMovieString = buffer.toString()
-            // The string gets parsed to become a JSON Object.
-            let rawMovieJSON = JSON.parse(rawMovieString)
+    if (!fs.existsSync('./moviedata.json')) {
+        let datasetCounter = 0;
+        let doWeHaveToPayCounter = 0;
+        const dataset = await Dataset.load(data_path)
+        // get list of all resources:
+        for (const id in dataset.resources) {
+            console.log(dataset.resources[id]._descriptor.name)
+        }
+        // get all tabular data(if exists any)
+        for (const id in dataset.resources) {
+            if (dataset.resources[id]._descriptor.format === "json") {
+                const file = dataset.resources[id]
+                // Get a raw stream
+                const stream = await file.stream()
+                // entire file as a buffer (be careful with large files!)
+                const buffer = await file.buffer
+                // The file is buffered, and once done is converted to a string (from 0's and 1's to something readable)
+                let rawMovieString = buffer.toString()
+                // The string gets parsed to become a JSON Object.
+                let rawMovieJSON = JSON.parse(rawMovieString)
 
-            datasetCounter++;
-            // Needs to loop through once first, then we care about the data.
-            if (datasetCounter === 2) {
-                let idCounter = 0;
-                for (let element in rawMovieJSON) {
-                    rawMovieJSON[element].onlyOscarsID = idCounter;
-                    idCounter++;
-                }
+                datasetCounter++;
+                // Needs to loop through once first, then we care about the data.
+                if (datasetCounter === 2) {
+                    let idCounter = 0;
+                    for (let element in rawMovieJSON) {
+                        rawMovieJSON[element].onlyOscarsID = idCounter;
+                        idCounter++;
+                    }
 
-                //TODO: Get version number from OMDB and check, not really needed?
-                if (!fs.existsSync('./moviedata.json')) {
+                    //TODO: Get version number from OMDB and check, not really needed?
                     let omdbJSONObjectDataList = [];
                     console.log('This is the length of rawMovieJSON: ' + rawMovieJSON.length)
                     for (let element = 0; element < rawMovieJSON.length; element++) {
@@ -172,19 +172,20 @@ async function upsertJSON() {
                         if (!fs.existsSync('./moviedata.json')) {
                             fs.writeFileSync('./moviedata.json', JSON.stringify(omdbJSONObjectDataList))
                             fs.closeSync(0);
-                            console.log("./moviedata.json' written successfully!");
+                            console.log("'./moviedata.json' written successfully!");
                         }
                     } catch (err) {
                         console.error(err)
                         return;
                     }
-                    console.log("Finished with installation of OMDB data and Oscar winning data");
-                    //TODO: Figure out which path we are using.
-                    app.locals.moviedata = require('./moviedata.json');
+                    console.log("Finished with installation of OMDB data and Oscar nominee/winner data");
                 }
             }
         }
     }
+    //TODO: Figure out which path we are using.
+    app.locals.moviedata = require('./moviedata.json');
+    console.log("moviedata is now stored in app.locals.moviedata");
 }
 
 module.exports = app;
