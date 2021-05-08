@@ -110,7 +110,21 @@ router.get('/', function (req, res, next) {
         return null;
     }
 
-    res.render('specificPage', {title: 'Specific Page', body: addFindings()});
+    /* Returns A Usable JSON STRING*/
+    function fixStringListForJSONCompatibility()
+    {
+        let movieDataScuffedList = addFindings();
+        if (movieDataScuffedList.length === 0) {
+            return null;
+        }
+        else {
+            movieDataScuffedList[0] = '[' + movieDataScuffedList[0];
+            movieDataScuffedList[movieDataScuffedList.length - 1] = movieDataScuffedList.length - 1 + ']';
+        }
+        return movieDataScuffedList;
+    }
+
+    res.render('specificPage', {title: 'Specific Page', filteringFindings: fixStringListForJSONCompatibility()});
 });
 
 /* JSON ONLY Query String NO STRINGIFYING*/
@@ -126,6 +140,7 @@ router.get('/json/', function (req, res, next) {
     }
     let temp_year = parseInt(req.query.year);
     let temp_category = req.query.category;
+
     console.log(req.query.year);
     console.log(req.query.category);
     console.log(req.query.winner);
@@ -224,7 +239,23 @@ router.get('/json/', function (req, res, next) {
         return null;
     }
 
-    res.json(addFindings());
+    /* Returns A Usable JSON STRING*/
+    function fixStringListForJSONCompatibility()
+    {
+        let movieDataScuffedList = addFindings();
+        if (movieDataScuffedList.length === 0) {
+            return null;
+        }
+        else {
+            movieDataScuffedList[0] = '[' + movieDataScuffedList[0];
+            movieDataScuffedList[movieDataScuffedList.length - 1] = movieDataScuffedList.length - 1 + ']';
+        }
+        return movieDataScuffedList;
+    }
+
+
+
+    res.json(fixStringListForJSONCompatibility());
 });
 
 

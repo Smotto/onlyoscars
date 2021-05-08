@@ -84,7 +84,7 @@ async function getData(url = '') {
 
 /* create/update JSON file on server start */
 async function upsertJSON() {
-    if (!fs.existsSync('./moviedata.json')) {
+    if (!fs.existsSync('./bin/moviedata.json')) {
         let datasetCounter = 0;
         let doWeHaveToPayCounter = 0;
         const dataset = await Dataset.load(data_path)
@@ -169,10 +169,10 @@ async function upsertJSON() {
                     }
                     console.log("How many requests we made: " + doWeHaveToPayCounter);
                     try {
-                        if (!fs.existsSync('./moviedata.json')) {
-                            fs.writeFileSync('./moviedata.json', JSON.stringify(omdbJSONObjectDataList))
+                        if (!fs.existsSync('./bin/moviedata.json')) {
+                            fs.writeFileSync('./bin/moviedata.json', JSON.stringify(omdbJSONObjectDataList))
                             fs.closeSync(0);
-                            console.log("'./moviedata.json' written successfully!");
+                            console.log("'./bin/moviedata.json' written successfully!");
                         }
                     } catch (err) {
                         console.error(err)
@@ -184,7 +184,7 @@ async function upsertJSON() {
         }
     }
     //TODO: Figure out which path we are using.
-    app.locals.moviedata = require('./moviedata.json');
+    app.locals.moviedata = require('./bin/moviedata.json');
     console.log("moviedata is now stored in app.locals.moviedata");
 }
 
