@@ -1,7 +1,10 @@
 extends layout
 
 block content
-    div #{div}
+    .body
+        .head
+            h1#SpecificTitleID #{SpecificTitle}
+    div#movieDataID #{filteringFindings}
 
     script(type = module src='/javascripts/specificPage.js')
 

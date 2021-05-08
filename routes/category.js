@@ -13,10 +13,19 @@ router.get('/:category', function (req, res, next) {
                 movieDataList.push(JSON.stringify(req.app.locals.moviedata[element]));
             }
         }
+
+        if (movieDataList.length === 0) {
+            return movieDataList;
+        }
+        else {
+            movieDataList[0] = '[' + movieDataList[0];
+            movieDataList[movieDataList.length - 1] = movieDataList.length - 1 + ']';
+        }
+
         return movieDataList;
     }
 
-    res.render('specificPage', {div: addFindings()});
+    res.render('specificPage', {filteringFindings: addFindings(), SpecificTitle: temp_category});
 });
 
 module.exports = router;

@@ -19,7 +19,7 @@ router.get('/', function (req, res, next) {
 
     function addFindings() {
         let movieDataList = [];
-        /* Everything ONLY */
+        /* Everything Required ONLY */
         if (req.query.year !== undefined &&
             req.query.category !== undefined &&
             req.query.winner !== undefined) {
@@ -32,7 +32,7 @@ router.get('/', function (req, res, next) {
             }
             return movieDataList;
         }
-        /* Nothing ONLY */
+        /* Nothing Required ONLY */
         if (req.query.year === undefined &&
             req.query.category === undefined &&
             req.query.winner === undefined) {
@@ -99,8 +99,7 @@ router.get('/', function (req, res, next) {
         /* Winner ONLY */
         if (req.query.winner !== undefined &&
             req.query.year === undefined &&
-            req.query.category === undefined)
-        {
+            req.query.category === undefined) {
             for (let element in req.app.locals.moviedata) {
                 if (req.app.locals.moviedata[element].winner === temp_winner) {
                     movieDataList.push(JSON.stringify(req.app.locals.moviedata[element]));
@@ -108,7 +107,7 @@ router.get('/', function (req, res, next) {
             }
             return movieDataList;
         }
-            return null;
+        return null;
     }
 
     res.render('specificPage', {title: 'Specific Page', body: addFindings()});
@@ -213,8 +212,7 @@ router.get('/json/', function (req, res, next) {
         /* Winner ONLY */
         if (req.query.winner !== undefined &&
             req.query.year === undefined &&
-            req.query.category === undefined)
-        {
+            req.query.category === undefined) {
             for (let element in req.app.locals.moviedata) {
                 if (req.app.locals.moviedata[element].winner === temp_winner) {
                     movieDataList.push((req.app.locals.moviedata[element]));
