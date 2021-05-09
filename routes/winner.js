@@ -12,7 +12,7 @@ router.get('/:category/year/:year/winner/:winner', function (req, res, next) {
         temp_winner = false;
     }
     let temp_year = parseInt(req.params.year);
-    let temp_category = req.params.category.toUpperCase();
+    let temp_category = req.params.category;
 
     function addFindings() {
         let movieDataList = [];
@@ -23,10 +23,18 @@ router.get('/:category/year/:year/winner/:winner', function (req, res, next) {
                 movieDataList.push(JSON.stringify(req.app.locals.moviedata[element]));
             }
         }
+        if (movieDataList.length === 0) {
+            return movieDataList;
+        }
+        else {
+            movieDataList[0] = '[' + movieDataList[0];
+            movieDataList[movieDataList.length - 1] = movieDataList[movieDataList.length - 1] + ']';
+        }
+
         return movieDataList;
     }
 
-    res.render('specificPage', {title: 'Specific Page', body: addFindings()});
+    res.render('specificPage', {title: 'Specific Page', filteringFindings: addFindings()});
 });
 
 module.exports = router;

@@ -119,7 +119,7 @@ router.get('/', function (req, res, next) {
         }
         else {
             movieDataScuffedList[0] = '[' + movieDataScuffedList[0];
-            movieDataScuffedList[movieDataScuffedList.length - 1] = movieDataScuffedList.length - 1 + ']';
+            movieDataScuffedList[movieDataScuffedList.length - 1] = movieDataScuffedList[movieDataScuffedList.length - 1] + ']';
         }
         return movieDataScuffedList;
     }
@@ -248,7 +248,7 @@ router.get('/json/', function (req, res, next) {
         }
         else {
             movieDataScuffedList[0] = '[' + movieDataScuffedList[0];
-            movieDataScuffedList[movieDataScuffedList.length - 1] = movieDataScuffedList.length - 1 + ']';
+            movieDataScuffedList[movieDataScuffedList.length - 1] = movieDataScuffedList[movieDataScuffedList.length - 1] + ']';
         }
         return movieDataScuffedList;
     }

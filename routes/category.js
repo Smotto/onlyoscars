@@ -19,7 +19,7 @@ router.get('/:category', function (req, res, next) {
         }
         else {
             movieDataList[0] = '[' + movieDataList[0];
-            movieDataList[movieDataList.length - 1] = movieDataList.length - 1 + ']';
+            movieDataList[movieDataList.length - 1] = movieDataList[movieDataList.length - 1] + ']';
         }
 
         return movieDataList;
