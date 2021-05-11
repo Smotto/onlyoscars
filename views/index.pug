@@ -17,6 +17,20 @@ block content
                     p#select-category-text Select Category
                     select#category.form(name='default')
             i.fa.fa-search#SearchButton
+            .threeWay
+                .toggle_radio
+                    input#first_toggle.toggle_option(type='radio' name='toggle_option')
+                    input#second_toggle.toggle_option(type='radio' checked='' name='toggle_option')
+                    input#third_toggle.toggle_option(type='radio' name='toggle_option')
+                    label(for='first_toggle')
+                        p Winner
+                    label(for='second_toggle')
+                        p None
+                    label(for='third_toggle')
+                        p Not Winner
+                    .toggle_option_slider
+
+
 
         var#moviedataJSON(hidden='true') #{JSON.stringify(moviedata)}
         var#category-name

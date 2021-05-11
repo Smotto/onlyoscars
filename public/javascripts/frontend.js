@@ -1,5 +1,5 @@
 const searchWrapper = document.querySelector(".search-input");
-const inputBox = searchWrapper.querySelector("#searchbar-id");
+const yearInput = searchWrapper.querySelector("#searchbar-id");
 const suggestionBox = searchWrapper.querySelector(".autocomplete-box");
 
 /* Auto completing, Finding, Selecting Year */
@@ -40,7 +40,7 @@ function searchYearAutoComplete() {
 /* DO NOT DELETE, for searchYearAutoComplete function */
 function select(element) {
     let selectedUserInput = element.textContent;
-    inputBox.value = selectedUserInput;
+    yearInput.value = selectedUserInput;
     searchWrapper.classList.remove("active");
 }
 
@@ -67,20 +67,77 @@ function categoryDropdown() {
     document.getElementById('category').innerHTML = string;
 }
 
-
 searchYearAutoComplete();
 categoryDropdown();
+
+/* Function to check value of toggle switch */
+function isWinnertoggle() {
+    let isWinner=document.getElementById("first_toggle").checked;
+    let none=document.getElementById("second_toggle").checked;
+    let notWinner=document.getElementById("third_toggle").checked;
+
+    if(isWinner === true) {
+        return true;
+    }
+    else if(notWinner === true) {
+        return false;
+    }
+    else if(none === true) {
+        return null;
+    }
+}
+
 document.getElementById("SearchButton").onclick = function () {
     let categorySelectionID = document.getElementById("category");
     let chosenCategory = categorySelectionID.options[categorySelectionID.selectedIndex].text;
-
     // TODO: Query and Params Fix, Do ALL Case Scenarios
     /* Case Scenarios */
-    if (chosenCategory.value === "None") {
+    //Search
+    if(yearInput.value === "" && chosenCategory === "None" && isWinnertoggle() == true) {
+        window.location.href = window.location;
     }
-    if (inputBox.value !== "") {
-        window.location.href = window.location + "api/?year=" + inputBox.value;
+    if(yearInput.value === "" && chosenCategory === "None" && isWinnertoggle() == null) {
+        window.location.href = window.location;
+    }
+    if(yearInput.value === "" && chosenCategory === "None" && isWinnertoggle() == false) {
+        window.location.href = window.location;
     }
 
-    // window.location.href = (window.location + "api/category/" + textToBeSent);
+    //Search with year, category, and winner
+    if(yearInput.value !== "" && chosenCategory !== "None" && isWinnertoggle() === true ) {
+        window.location.href = window.location + "api/?year=" + yearInput.value + "/category/" + chosenCategory + "&winner=true";
+    }
+    //Search with year and category
+    if(yearInput.value !== "" && chosenCategory !== "None" && isWinnertoggle() === null) {
+        window.location.href = window.location + "api/?year=" + yearInput.value + "/category/" + chosenCategory;
+    }
+    //Search with year, category, and not winner
+    if(yearInput.value !== "" && chosenCategory !== "None" && isWinnertoggle() === false) {
+        window.location.href = window.location + "api/?year=" + yearInput.value + "/category/" + chosenCategory + "&winner=false";
+    }
+    //Search with category and winner
+    if(yearInput.value === "" && chosenCategory !== "None" && isWinnertoggle() === true) {
+        window.location.href = window.location + "api/category/" + chosenCategory + "&winner=true";
+    }
+    //Search with category
+    if(yearInput.value === "" && chosenCategory !== "None" && isWinnertoggle() === null) {
+        window.location.href = window.location + "api/category/" + chosenCategory;
+    }
+    //Search with category and not winner
+    if(yearInput.value === "" && chosenCategory !== "None" && isWinnertoggle() === false) {
+        window.location.href = window.location + "api/category/" + chosenCategory + "&winner=false";
+    }
+    //Search with year and winner
+    if(yearInput.value !== "" && chosenCategory === "None" && isWinnertoggle() === true) {
+        window.location.href = window.location + "api/?year" + yearInput.value + "&winner=true";
+    }
+    //Search with year
+    if(yearInput.value !== "" && chosenCategory === "None" && isWinnertoggle() === null) {
+        window.location.href = window.location + "api/?year" + yearInput.value;
+    }
+    //Search with year and not winner
+    if(yearInput.value !== "" && chosenCategory === "None" && isWinnertoggle() === false) {
+        window.location.href = window.location + "api/?year" + yearInput.value + "&winner=false";
+    }
+    // window.location.href = (window.location + "api/category/" + chosenCategory);
 }
