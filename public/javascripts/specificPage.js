@@ -1,10 +1,15 @@
 console.log("Specific Page F12 Console.")
 
 let movieData = document.getElementById('movieDataID');
-let parsedData = JSON.parse(movieData.innerText);
-for (let element in parsedData)
-{
-    console.log(parsedData[element]);
+if(movieData.innerText < 3) {
+    window.alert("No Results, redirecting to homepage");
+    window.history.back();
+}
+else {
+    let parsedData = JSON.parse(movieData.innerText);
+    for (let element in parsedData) {
+        console.log(parsedData[element]);
+    }
 }
 
 // TODO: Filter out the data

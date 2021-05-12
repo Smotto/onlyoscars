@@ -1,4 +1,6 @@
 body {
+  background-color: #000 !important;
+  overflow: auto;
   background-image: url("../img/oaward.png");
   background-size: cover;
   height: 1080px;
