@@ -239,23 +239,7 @@ router.get('/json/', function (req, res, next) {
         return null;
     }
 
-    /* Returns A Usable JSON STRING*/
-    function fixStringListForJSONCompatibility()
-    {
-        let movieDataScuffedList = addFindings();
-        if (movieDataScuffedList.length === 0) {
-            return null;
-        }
-        else {
-            movieDataScuffedList[0] = '[' + movieDataScuffedList[0];
-            movieDataScuffedList[movieDataScuffedList.length - 1] = movieDataScuffedList[movieDataScuffedList.length - 1] + ']';
-        }
-        return movieDataScuffedList;
-    }
-
-
-
-    res.json(fixStringListForJSONCompatibility());
+    res.json(addFindings());
 });
 
 
