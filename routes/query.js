@@ -164,7 +164,7 @@ router.get('/json/', function (req, res, next) {
         if (req.query.year === undefined &&
             req.query.category === undefined &&
             req.query.winner === undefined) {
-            return req.app.locals.moviedata;
+            return "";
         }
         /* Year AND Category ONLY */
         if (req.query.year !== undefined &&
