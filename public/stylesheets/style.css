@@ -3,7 +3,8 @@ body {
   overflow: auto;
   background-image: url("../img/oaward.png");
   background-size: cover;
-  height: 1080px;
+  height: 100vh;
+  width: 100vw;
 }
 img{
   padding-top: 35px;
