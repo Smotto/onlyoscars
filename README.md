@@ -79,7 +79,7 @@ You need the following:
    ```sh
    npm install
    ```
-2. Install NPM packages
+3. Start the program
    ```sh
    npm start
    ```
