@@ -81,7 +81,7 @@ In some cases, if additional movie information is not found using the OMDB API t
 
 ### GET `/api/json/?winner=true`
 
-This route returns every movie that is a winner by adding `/api/json/?winner=false` after the root URL. This collection query returns the movies in a JSON format.
+This route returns every movie that is a winner by adding `/api/json/?winner=true` after the root URL. This collection query returns the movies in a JSON format.
 
 Example: 
 
