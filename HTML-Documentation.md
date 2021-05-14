@@ -15,7 +15,7 @@ Each movie has five keys if additional information is not found using the OMDB A
 }
 ```
 
-If additional movie data is found using the OMDB API, the object contains an additional nested object: omdbDATA, containing the keys Tile, Year, Rated, Released, Runtime, Genre, Director, Writer, Actors, Plot, Language, Country, Awards, Poster, an array of objects, Ratings, where each array contains object keys Source and Value, Metascore, imdbRating, imdbVotes, imdbID, Type, DVD, BoxOffice, Production, Website, and Response.   .
+If additional movie data is found using the OMDB API, the object contains an additional nested object: omdbDATA, containing the keys Tile, Year, Rated, Released, Runtime, Genre, Director, Writer, Actors, Plot, Language, Country, Awards, Poster, an array of objects, Ratings, where each array contains object keys Source and Value, Metascore, imdbRating, imdbVotes, imdbID, Type, DVD, BoxOffice, Production, Website, and Response.   
 
 ```json
 {
