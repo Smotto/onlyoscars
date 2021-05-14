@@ -3,8 +3,7 @@ extends layout
 block content
     .body
         .head
-            h1#ootitle= title
-                img(src='./img/oscars.png')
+            img#ootitle(src='./img/title.png')
         .position
             .wrapper
                 .chooseYear
@@ -29,7 +28,6 @@ block content
                     label(for='third_toggle')
                         p Not Winner
                     .toggle_option_slider
-
 
 
         var#moviedataJSON(hidden='true') #{JSON.stringify(moviedata)}
