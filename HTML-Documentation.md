@@ -129,59 +129,59 @@ Example:
 
 ## Movie Data: category
 
-### GET `/api/json/?category=`
+  ### GET `/api/json/?category=`
 
-This route returns every movie of a category by adding `/api/json/?category=CATEGORY%HERE`, replacing `CATEGORY%20HERE` with the chosen category, (`%20` for spaces), after the root URL. This collection query returns the movies in a JSON format.
+  This route returns every movie of a category by adding `/api/json/?category=CATEGORY%HERE`, replacing `CATEGORY%20HERE` with the chosen category, (`%20` for spaces), after the root URL. This collection query returns the movies in a JSON format.
 
-Example: GET `/api/json/?category=ACTRESS%20IN%20A%20SUPPORTING%20ROLE`
+  Example: GET `/api/json/?category=ACTRESS%20IN%20A%20SUPPORTING%20ROLE`
 
-```json
-{
-    "category": "ACTRESS IN A SUPPORTING ROLE",
-    "entity": "Beulah Bondi",
-    "winner": false,
-    "year": 1936,
-    "onlyOscarsID": 453,
-    "omdbData": {
-      "Response": "False",
-      "Error": "Movie not found!"
-    }
-  },
+  ```json
   {
-    "category": "ACTRESS IN A SUPPORTING ROLE",
-    "entity": "Alice Brady",
-    "winner": false,
-    "year": 1936,
-    "onlyOscarsID": 454,
-    "omdbData": {
-      "Title": "Alice Brady in a Liberty Loan Appeal",
-      "Year": "1918",
-      "Rated": "N/A",
-      "Released": "01 Oct 1918",
-      "Runtime": "N/A",
-      "Genre": "Short",
-      "Director": "N/A",
-      "Writer": "N/A",
-      "Actors": "Alice Brady",
-      "Plot": "Alice Brady shows women how their contributions help provide soldiers' uniforms.",
-      "Language": "English",
-      "Country": "USA",
-      "Awards": "N/A",
-      "Poster": "N/A",
-      "Ratings": [],
-      "Metascore": "N/A",
-      "imdbRating": "N/A",
-      "imdbVotes": "N/A",
-      "imdbID": "tt0486256",
-      "Type": "movie",
-      "DVD": "N/A",
-      "BoxOffice": "N/A",
-      "Production": "N/A",
-      "Website": "N/A",
-      "Response": "True"
+      "category": "ACTRESS IN A SUPPORTING ROLE",
+      "entity": "Beulah Bondi",
+      "winner": false,
+      "year": 1936,
+      "onlyOscarsID": 453,
+      "omdbData": {
+        "Response": "False",
+        "Error": "Movie not found!"
+      }
+    },
+    {
+      "category": "ACTRESS IN A SUPPORTING ROLE",
+      "entity": "Alice Brady",
+      "winner": false,
+      "year": 1936,
+      "onlyOscarsID": 454,
+      "omdbData": {
+        "Title": "Alice Brady in a Liberty Loan Appeal",
+        "Year": "1918",
+        "Rated": "N/A",
+        "Released": "01 Oct 1918",
+        "Runtime": "N/A",
+        "Genre": "Short",
+        "Director": "N/A",
+        "Writer": "N/A",
+        "Actors": "Alice Brady",
+        "Plot": "Alice Brady shows women how their contributions help provide soldiers' uniforms.",
+        "Language": "English",
+        "Country": "USA",
+        "Awards": "N/A",
+        "Poster": "N/A",
+        "Ratings": [],
+        "Metascore": "N/A",
+        "imdbRating": "N/A",
+        "imdbVotes": "N/A",
+        "imdbID": "tt0486256",
+        "Type": "movie",
+        "DVD": "N/A",
+        "BoxOffice": "N/A",
+        "Production": "N/A",
+        "Website": "N/A",
+        "Response": "True"
+      }
     }
-  }
-```
+  ```
 
 ## Movie Data: year
 
