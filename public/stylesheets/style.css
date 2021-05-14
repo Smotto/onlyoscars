@@ -188,7 +188,7 @@ img{
 }
 
 #first_toggle:checked ~ .toggle_option_slider{
-  background: rgba(255,255,255,.3);
+  background: rgba(80, 153, 3, 0.3);
   left: 3px;
 }
 #second_toggle:checked ~ .toggle_option_slider{
@@ -196,7 +196,7 @@ img{
   left: 109px;
 }
 #third_toggle:checked ~ .toggle_option_slider{
-  background: rgba(255,255,255,.3);
+  background: rgba(236, 4, 37, 0.42);
   left: 215px;
 }
 
