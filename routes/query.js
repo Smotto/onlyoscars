@@ -100,6 +100,9 @@ router.get('/', function (req, res, next) {
         if (req.query.winner !== undefined &&
             req.query.year === undefined &&
             req.query.category === undefined) {
+            if (temp_winner === false) {
+                return "";
+            }
             for (let element in req.app.locals.moviedata) {
                 if (req.app.locals.moviedata[element].winner === temp_winner) {
                     movieDataList.push(JSON.stringify(req.app.locals.moviedata[element]));
@@ -107,7 +110,7 @@ router.get('/', function (req, res, next) {
             }
             return movieDataList;
         }
-        return null;
+        return "";
     }
 
     /* Returns A Usable JSON STRING*/
@@ -115,7 +118,7 @@ router.get('/', function (req, res, next) {
     {
         let movieDataScuffedList = addFindings();
         if (movieDataScuffedList.length === 0) {
-            return null;
+            return "";
         }
         else {
             movieDataScuffedList[0] = '[' + movieDataScuffedList[0];
@@ -228,6 +231,10 @@ router.get('/json/', function (req, res, next) {
         if (req.query.winner !== undefined &&
             req.query.year === undefined &&
             req.query.category === undefined) {
+            if (temp_winner === false)
+            {
+                return "";
+            }
             for (let element in req.app.locals.moviedata) {
                 if (req.app.locals.moviedata[element].winner === temp_winner) {
                     movieDataList.push((req.app.locals.moviedata[element]));
@@ -236,7 +243,7 @@ router.get('/json/', function (req, res, next) {
             return movieDataList;
         }
 
-        return null;
+        return "";
     }
 
     res.json(addFindings());
