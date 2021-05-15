@@ -63,6 +63,10 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
+There are two case testing files using Postman:
+* Case Testing OnlyOscars.postman_collection.json
+* JSON Only Case Testing.postman_collection.json
+
 You need the following:
 * IntelliJ,
 * Webstorm (optional IDE)
