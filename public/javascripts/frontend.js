@@ -95,49 +95,61 @@ document.getElementById("SearchButton").onclick = function () {
     //Search
     if(yearInput.value === "" && chosenCategory === "None" && isWinnertoggle() == true) {
         window.location.href = window.location + "api/?winner=true";
+        return;
     }
     if(yearInput.value === "" && chosenCategory === "None" && isWinnertoggle() == null) {
-        window.location.href = window.location + "api";
+        window.location.href = window.location;
+        return;
     }
     if(yearInput.value === "" && chosenCategory === "None" && isWinnertoggle() == false) {
         window.location.href = window.location + "api/?winner=false";
+        return;
     }
 
     //Search with year, category, and winner
     if(yearInput.value !== "" && chosenCategory !== "None" && isWinnertoggle() === true ) {
-        window.location.href = window.location + "api/?year=" + yearInput.value + "/category/" + chosenCategory + "&winner=true";
+        window.location.href = window.location + "api/category/" + chosenCategory + "/year/" + yearInput.value + "/winner/true";
+        return;
     }
     //Search with year and category
     if(yearInput.value !== "" && chosenCategory !== "None" && isWinnertoggle() === null) {
-        window.location.href = window.location + "api/?year=" + yearInput.value + "/category/" + chosenCategory;
+        window.location.href = window.location + "api/category/" + chosenCategory + "/year/" + yearInput.value;
+        return;
     }
     //Search with year, category, and not winner
     if(yearInput.value !== "" && chosenCategory !== "None" && isWinnertoggle() === false) {
-        window.location.href = window.location + "api/?year=" + yearInput.value + "/category/" + chosenCategory + "&winner=false";
+        window.location.href = window.location + "api/category/" + chosenCategory + "/year/" + yearInput.value + "/winner/false";
+        return;
     }
     //Search with category and winner
     if(yearInput.value === "" && chosenCategory !== "None" && isWinnertoggle() === true) {
-        window.location.href = window.location + "api/category/" + chosenCategory + "&winner=true";
+        window.location.href = window.location + "api/?category=" + chosenCategory + "&winner=true";
+        return;
     }
     //Search with category
     if(yearInput.value === "" && chosenCategory !== "None" && isWinnertoggle() === null) {
         window.location.href = window.location + "api/category/" + chosenCategory;
+        return;
     }
     //Search with category and not winner
     if(yearInput.value === "" && chosenCategory !== "None" && isWinnertoggle() === false) {
-        window.location.href = window.location + "api/category/" + chosenCategory + "&winner=false";
+        window.location.href = window.location + "api/?category=" + chosenCategory + "&winner=false";
+        return;
     }
     //Search with year and winner
     if(yearInput.value !== "" && chosenCategory === "None" && isWinnertoggle() === true) {
-        window.location.href = window.location + "api/?year" + yearInput.value + "&winner=true";
+        window.location.href = window.location + "api/?year=" + yearInput.value + "&winner=true";
+        return;
     }
     //Search with year
     if(yearInput.value !== "" && chosenCategory === "None" && isWinnertoggle() === null) {
-        window.location.href = window.location + "api/?year" + yearInput.value;
+        window.location.href = window.location + "api/?year=" + yearInput.value;
+        return;
     }
     //Search with year and not winner
     if(yearInput.value !== "" && chosenCategory === "None" && isWinnertoggle() === false) {
-        window.location.href = window.location + "api/?year" + yearInput.value + "&winner=false";
+        window.location.href = window.location + "api/?year=" + yearInput.value + "&winner=false";
+        return;
     }
     // window.location.href = (window.location + "api/category/" + chosenCategory);
 }
