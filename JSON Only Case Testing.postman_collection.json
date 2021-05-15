@@ -1,0 +1,593 @@
+{
+	"info": {
+		"_postman_id": "edd64304-d901-4420-a4b8-d4bf0c12dd84",
+		"name": "JSON Only Case Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Category: ACTOR\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].category).to.eql(\"ACTOR\");\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?category=ACTOR",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "ACTOR"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CategoryYear",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Category and Year: ACTOR and 1929\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].category).to.eql(\"ACTOR\");\r",
+							"        pm.expect(response[index].year).to.eql(1929);\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?category=ACTOR&year=1929",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "ACTOR"
+						},
+						{
+							"key": "year",
+							"value": "1929"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CategoryWinner-true",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Category and Winner true: ACTOR and true\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].category).to.eql(\"ACTOR\");\r",
+							"        pm.expect(response[index].winner).to.eql(true);\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?category=ACTOR&winner=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "ACTOR"
+						},
+						{
+							"key": "winner",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CategoryWinner-false",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Category and Winner false: ACTOR and false\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].category).to.eql(\"ACTOR\");\r",
+							"        pm.expect(response[index].winner).to.eql(false);\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?category=ACTOR&winner=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "ACTOR"
+						},
+						{
+							"key": "winner",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CategoryYearWinner-true",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Category Year and Winner true\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].category).to.eql(\"ACTOR\");\r",
+							"        pm.expect(response[index].year).to.eql(1929);\r",
+							"        pm.expect(response[index].winner).to.eql(true);\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?category=ACTOR&year=1929&winner=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "ACTOR"
+						},
+						{
+							"key": "year",
+							"value": "1929"
+						},
+						{
+							"key": "winner",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CategoryYearWinner-false",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Category Year and Winner false\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].category).to.eql(\"ACTOR\");\r",
+							"        pm.expect(response[index].year).to.eql(1929);\r",
+							"        pm.expect(response[index].winner).to.eql(false);\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?category=ACTOR&year=1929&winner=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "ACTOR"
+						},
+						{
+							"key": "year",
+							"value": "1929"
+						},
+						{
+							"key": "winner",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Year: 1996\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].year).to.eql(1996);\r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?year=1996",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "1996"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "YearWinner-true",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Year and Winner true: 1996 and true\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].year).to.eql(1996);\r",
+							"        pm.expect(response[index].winner).to.eql(true);    \r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?year=1996&winner=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "1996"
+						},
+						{
+							"key": "winner",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "YearWinner-false",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Year and Winner false: 1996 and false\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].year).to.eql(1996);\r",
+							"        pm.expect(response[index].winner).to.eql(false);    \r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?year=1996&winner=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "1996"
+						},
+						{
+							"key": "winner",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Winner-true",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Winner: true\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].winner).to.eql(true);    \r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?winner=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "winner",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Winner-false",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Testing Winner: false\", () => {\r",
+							"    for (let index in response)\r",
+							"    {\r",
+							"        pm.expect(response[index].winner).to.eql(false);    \r",
+							"    }\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/json/?winner=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "winner",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
