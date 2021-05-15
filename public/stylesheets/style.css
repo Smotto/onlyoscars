@@ -1,3 +1,7 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
 body {
   background-color: #000 !important;
   overflow: auto;
@@ -199,6 +203,88 @@ img{
   background: rgba(255,255,255,.3);
   left: 215px;
 }
+
+#SpecificTitleID {
+  text-align: center;
+  font-family: "Futura";
+  margin: auto;
+  padding: 10px;
+  font-size: 50pt;
+  color: #b19330;
+  height: 200px;
+  background-image: linear-gradient(to right, transparent, #394431);
+}
+
+#movieDataID {
+  font-size: 35pt;
+  font-family: "Futura";
+  color: #9d9999;
+  float: left;
+  padding-bottom: 25px;
+}
+
+#winner {
+  font-size: 15pt;
+  color: #F9E29C;
+  font-family: "Futura";
+  text-align: center;
+  position:relative;
+  left: 440px;
+  top: 150px;
+  border-right: 5px solid;
+  margin: 0;
+}
+
+#year {
+  font-size: 15pt;
+  color: #F9E29C;
+  font-family: "Futura";
+  text-align: center;
+  position:relative;
+  left: 550px;
+  bottom:510px;
+  border-left: 5px solid;
+  margin: 0;
+}
+
+#entity {
+  font-size: 15pt;
+  color: #F9E29C;
+  font-family: "Futura";
+  text-align: center;
+  position:relative;
+  font-style: oblique;
+  bottom: 500px;
+  left: 1400px;
+  margin: 0;
+
+}
+
+
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  position: relative;
+  color: #b19330;
+  top: 80px;
+  right: 650px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block;
+}
+.btn:hover {background: #eee;}
+.success {color: green;}
+.info {color: dodgerblue;}
+.warning {color: orange;}
+.danger {color: red;}
+.default {color: black;}
+
+
+
+
+
 
 /*div {*/
 /*  width: 300px;*/

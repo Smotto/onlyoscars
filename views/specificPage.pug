@@ -1,10 +1,30 @@
 extends layout
 
 block content
-    .body
-        .head
+    .head
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        .body
             h1#SpecificTitleID #{SpecificTitle}
-    div#movieDataID #{filteringFindings}
+                a(href='http://localhost:3000/')
+                    button.btn.Home HOME
+            .position
+                .wrapper
+                    div#movieDataID(hidden='true') #{filteringFindings}
+                    p#winner
+                    p#entity
+                    p#year
+
+
+
+
+
+
+
+
+
+
+
+
 
     script(type = module src='/javascripts/specificPage.js')
 
