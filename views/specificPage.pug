@@ -1,22 +1,26 @@
 extends layout
 
+
 block content
-    .head2
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        .body2
-            h1#SpecificTitleID #{SpecificTitle}
-                a(href='http://localhost:3000/')
-                    button.btn.Home HOME
-            .position
-                .wrapper
-                    div#movieDataID(hidden='true') #{filteringFindings}
-                    table#movieDataTable(style='width:100%')
-                        tr
-                            th#year-header Year
-                            th#category-header Category
-                            th#entity-header Entity
-                            th#winner-header Winner
-                            th#link-header Movie Link
+    .body
+        .head
+            //<meta name="viewport" content="width=device-width, initial-scale=1">
+            a(href='http://localhost:3000/')
+                button.btn.Home HOME
+            .body2
+                h1#SpecificTitleID #{SpecificTitle}
+                    //a(href='http://localhost:3000/')
+                    //    button.btn.Home HOME
+                .position
+                    .wrapper2
+                        div#movieDataID(hidden='true') #{filteringFindings}
+                        table#movieDataTable
+                            tr
+                                th#year-header Year
+                                th#category-header Category
+                                th#entity-header Entity
+                                th#winner-header Winner
+                                th#link-header Movie Link
 
 
 

@@ -25,7 +25,7 @@ router.get('/:category', function (req, res, next) {
         return movieDataList;
     }
 
-    res.render('specificPage', {filteringFindings: addFindings(), SpecificTitle: temp_category});
+    res.render('specificPage', {filteringFindings: addFindings()});
 });
 
 module.exports = router;

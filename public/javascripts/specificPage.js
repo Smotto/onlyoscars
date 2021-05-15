@@ -79,7 +79,7 @@ else {
 
             string = "<tr> <td>" + yearData[index] + "</td> <td>" + categoryData[index] +
                 "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index] +
-                "</td> <td>" + "<a href=" + link + imdbData[index] + ">" + 'LINK' + "</a> </td> </tr>";
+                "</td> <td>" + "<a target=" + "blank" + " rel=" + "noopener noreferrer" + " href=" + link + imdbData[index] + ">" + 'IMDB Link' + "</a> </td> </tr>";
             table.innerHTML += string;
         }
     }
