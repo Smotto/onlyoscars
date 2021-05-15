@@ -217,15 +217,91 @@ Example: `/api/year/?year=1945`
 
 ## Movie Data: category and winner
 
+### GET `/api/?category=0000&winner=true`
+
+This route returns every movie by the category and winner by adding `/api/?category=0000&winner=true`, replacing `0000` with appropriate category and `true` indicating Oscar winners. This collection query returns the movies in a JSON format.
+
+Example: `/api/?category=WRITING&winner=true`
+
+```json
+{
+  ***************JSON HERE************** 
+}
+```
 ## Movie Data: category and not winner
 
-## Movie Data: category and year
- 
-## Movie Data: category, year, and winner
+### GET `/api/?category=0000&winner=false`
 
+This route returns every movie by the category and not winner by adding `/api/?category=0000&winner=false`, replacing `0000` with appropriate category and `false` indicating Oscars that did not win. This collection query returns the movies in a JSON format.
+
+Example: `/api/?category=DIRECTING&winner=false`
+```json
+{
+  ***************JSON HERE**************
+}
+```
+## Movie Data: category and year
+### GET `/api/category/0000/year/----`
+
+This route returns every movie by the category and year by adding `/api/category/0000/year/---`, replacing `0000` with appropriate category and `----` with year. This collection query returns the movies in a JSON format.
+
+Example: `/api/category/DIRECTING/year/1930`
+
+```json
+{
+  ***************JSON HERE**************
+}
+```
+## Movie Data: category, year, and winner
+### GET `/api/category/0000/year/----/winner/true`
+
+This route returns every movie by the category, year and winner by adding `/api/category/0000/year/----/winner/true`, replacing `0000` with appropriate category, `----` with year and `true` which indicates Oscar winners. This collection query returns the movies in a JSON format.
+
+Example: `/api/category/CINEMATOGRAPHY/year/1931/winner/true`
+
+```json
+{
+***************JSON HERE**************
+}
+```
 ## Movie Data: category, year, and not winner
+### GET `/api/category/0000/year/----/winner/false`
+
+This route returns every movie by the category, year and not winner by adding ``/api/category/0000/year/----/winner/false``, replacing `0000` with appropriate category, `----` with year and `false` which indicates Oscars that did not win. This collection query returns the movies in a JSON format.
+
+Example: `/api/category/DIRECTING/year/1935/winner/false`
+
+```json
+{
+  ***************JSON HERE**************
+}
+```
 
 ## Movie Data: year and winner
+### GET `/api/?year=----&winner=true`
+
+This route returns every movie by the year and winner by adding `/api/?year=----&winner=true`, replacing `----` with year and `true` indicating Oscar winners. This collection query returns the movies in a JSON format.
+
+Example: `/api/?year=1935&winner=true`
+
+```json
+{
+  ***************JSON HERE**************
+}
+```
 
 ## Movie Data: year and not winner
+### GET `/api/?year=----&winner=false`
+
+This route returns every movie by the year and not winner by adding `/api/?year=----&winner=false`, replacing `----` with year and `false` indicating Oscar not winners. This collection query returns the movies in a JSON format.
+
+Example: `/api/?year=1941&winner=false`
+
+```json
+{
+  ***************JSON HERE**************
+}
+```
+
+
 
