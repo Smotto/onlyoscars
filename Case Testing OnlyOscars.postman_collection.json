@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "d0105fa9-a923-4cde-bac5-579cd39e892e",
+		"name": "Case Testing OnlyOscars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Singleton Params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Singleton Parameter Test\", function () { \r",
+							"    let hmtlData = cheerio.load(pm.response.text());\r",
+							"    let htmlString = hmtlData.text();\r",
+							"    let parsedString = htmlString.replace(\"Specific Page\", \"\");\r",
+							"    let parsedJSON = JSON.parse(parsedString);\r",
+							"    console.log(parsedJSON);\r",
+							"    \r",
+							"    pm.expect(parsedJSON[0].category).to.eql(\"ACTOR\");\r",
+							"    pm.expect(parsedJSON[0].year).to.eql(1929);\r",
+							"    pm.expect(parsedJSON[0].winner).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/category/ACTOR/year/1929/winner/true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"category",
+						"ACTOR",
+						"year",
+						"1929",
+						"winner",
+						"true"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Singleton Query",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Singleton Query Test\", function () { \r",
+							"    let hmtlData = cheerio.load(pm.response.text());\r",
+							"    let htmlString = hmtlData.text();\r",
+							"    let parsedString = htmlString.replace(\"Specific Page\", \"\");\r",
+							"    let parsedJSON = JSON.parse(parsedString);\r",
+							"    console.log(parsedJSON);\r",
+							"    \r",
+							"    pm.expect(parsedJSON[0].category).to.eql(\"ACTOR\");\r",
+							"    pm.expect(parsedJSON[0].year).to.eql(1929);\r",
+							"    pm.expect(parsedJSON[0].winner).to.eql(true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/?category=ACTOR&year=1929&winner=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						""
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "ACTOR"
+						},
+						{
+							"key": "year",
+							"value": "1929"
+						},
+						{
+							"key": "winner",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Collective Params",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Singleton Query Test\", function () { \r",
+							"    let hmtlData = cheerio.load(pm.response.text());\r",
+							"    let htmlString = hmtlData.text();\r",
+							"    let parsedString = htmlString.replace(\"BEST PICTURE\", \"\");\r",
+							"    let parsedJSON = JSON.parse(parsedString);\r",
+							"    console.log(parsedJSON);\r",
+							"    \r",
+							"    pm.expect(parsedJSON[0].category).to.eql(\"BEST PICTURE\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/category/BEST%20PICTURE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"category",
+						"BEST%20PICTURE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Collective Query",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Collective Query Test\", function () { \r",
+							"    let hmtlData = cheerio.load(pm.response.text());\r",
+							"    let htmlString = hmtlData.text();\r",
+							"    let parsedString = htmlString.replace(\"Specific Page\", \"\");\r",
+							"    let parsedJSON = JSON.parse(parsedString);\r",
+							"    console.log(parsedJSON);\r",
+							"    pm.expect(parsedJSON[0].category).to.eql(\"BEST PICTURE\");\r",
+							"    for (let index in parsedJSON) {\r",
+							"        pm.expect(parsedJSON[index].category).to.eql(\"BEST PICTURE\");\r",
+							"    }\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/?category=BEST%20PICTURE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						""
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "BEST%20PICTURE"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

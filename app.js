@@ -10,6 +10,7 @@ var categoryRouter = require('./routes/category');
 var yearRouter = require('./routes/year');
 var winnerRouter = require('./routes/winner');
 var queryRouter = require('./routes/query');
+var apiDocumentationRouter = require('./routes/apiDocumentation');
 
 /* Requirements for JSON data */
 const {Dataset} = require('data.js')
@@ -37,6 +38,7 @@ app.use('/api/', queryRouter);
 app.use('/api/category/', categoryRouter);
 app.use('/api/category/', yearRouter);
 app.use('/api/category/', winnerRouter);
+app.use('/api/documentation/', apiDocumentationRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));

@@ -16,16 +16,15 @@ img{
   object-position: center;
   right: 50%;
 }
-.head #ootitle{
-  text-align: center;
-  font-family: "Futura";
-  font-size: 80pt;
-  color: #b19330;
-  height: 200px;
-  background-image: linear-gradient(to right, transparent, #394431);
 
+.head #ootitle{
+  background-image: linear-gradient(to right, transparent, #394431);
+  height: 220px;
+  width: 100vw;
+  padding-bottom: 20px;
 }
-.chooseYear{
+
+.chooseYear {
   font-size: 35pt;
   font-family: "Helvetica Neue";
   color: #9d9999;
@@ -40,13 +39,13 @@ img{
 }
 
 
-.wrapper{
+.wrapper {
   max-width: 800px;
   margin: 20px auto;
   text-align: center;
 }
 
-.wrapper .search-input{
+.wrapper .search-input {
   width: 100%;
   font-family: "Helvetica Neue";
   font-size: 25px;
@@ -66,7 +65,7 @@ img{
   outline: none;
 }
 
-.search-input .autocomplete-box{
+.search-input .autocomplete-box {
   padding: 0px;
   max-height: 280px;
   overflow-y: auto;
@@ -74,13 +73,13 @@ img{
   pointer-events: none;
 }
 
-.search-input.active .autocomplete-box{
+.search-input.active .autocomplete-box {
   padding: 10px 8px;
   opacity: 1;
   pointer-events: auto;
 }
 
-.autocomplete-box li{
+.autocomplete-box li {
   list-style: none;
   padding: 8px 12px;
   width: 100%;
@@ -89,16 +88,16 @@ img{
   display: none;
 }
 
-.search-input.active .autocomplete-box li{
+.search-input.active .autocomplete-box li {
   display: block;
 }
 
-.autocomplete-box li:hover{
+.autocomplete-box li:hover {
   background: #262626;
   border-radius: 30px;
 }
 
-.dropdowngroup select{
+.dropdowngroup select {
   text-align: center;
   font-family: "Helvetica Neue";
   padding: 0 60px 0 20px;
@@ -124,7 +123,7 @@ img{
   padding: 0.4em 0.5em;
 }
 
-#select-category-text{
+#select-category-text {
   font-size: 35pt;
   font-family: "Helvetica Neue";
   color: #9d9999;
@@ -136,7 +135,7 @@ img{
 .threeWay {
   margin: 100px 0;
 }
-.toggle_radio{
+.toggle_radio {
   position: relative;
   background: rgba(255,255,255,.1);
   margin: 4px auto;
@@ -152,11 +151,11 @@ img{
 .toggle_radio > * {
   float: left;
 }
-.toggle_radio input[type=radio]{
+.toggle_radio input[type=radio] {
   display: none;
   /*position: fixed;*/
 }
-.toggle_radio label{
+.toggle_radio label {
   font: 90%/1.618 "Source Sans Pro";
   color: rgba(255,255,255,.9);
   z-index: 0;
@@ -174,7 +173,7 @@ img{
   /*margin: 0 2px;*/
   /*background: blue;*/ /*make it blue*/
 }
-.toggle_option_slider{
+.toggle_option_slider {
   /*display: none;*/
   /*background: red;*/
   width: 100px;
@@ -191,16 +190,16 @@ img{
   transition: all .4s ease;
 }
 
-#first_toggle:checked ~ .toggle_option_slider{
-  background: rgba(255,255,255,.3);
+#first_toggle:checked ~ .toggle_option_slider {
+  background: rgba(80, 153, 3, 0.3);
   left: 3px;
 }
-#second_toggle:checked ~ .toggle_option_slider{
+#second_toggle:checked ~ .toggle_option_slider {
   background: rgba(255,255,255,.3);
   left: 109px;
 }
-#third_toggle:checked ~ .toggle_option_slider{
-  background: rgba(255,255,255,.3);
+#third_toggle:checked ~ .toggle_option_slider {
+  background: rgba(236, 4, 37, 0.42);
   left: 215px;
 }
 

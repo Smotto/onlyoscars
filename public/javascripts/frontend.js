@@ -94,13 +94,13 @@ document.getElementById("SearchButton").onclick = function () {
     /* Case Scenarios */
     //Search
     if(yearInput.value === "" && chosenCategory === "None" && isWinnertoggle() == true) {
-        window.location.href = window.location;
+        window.location.href = window.location + "api/?winner=true";
     }
     if(yearInput.value === "" && chosenCategory === "None" && isWinnertoggle() == null) {
-        window.location.href = window.location;
+        window.location.href = window.location + "api";
     }
     if(yearInput.value === "" && chosenCategory === "None" && isWinnertoggle() == false) {
-        window.location.href = window.location;
+        window.location.href = window.location + "api/?winner=false";
     }
 
     //Search with year, category, and winner
