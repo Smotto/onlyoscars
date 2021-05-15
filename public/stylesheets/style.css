@@ -212,6 +212,7 @@ img{
   color: #b19330;
   height: 200px;
   background-image: linear-gradient(to right, transparent, #394431);
+
 }
 
 #movieDataID {
@@ -256,8 +257,9 @@ img{
   bottom: 500px;
   left: 1400px;
   margin: 0;
-
 }
+
+
 
 
 .btn {

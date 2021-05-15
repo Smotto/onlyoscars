@@ -42,9 +42,14 @@ else {
         }
         function getIMDBID() {
             let tempIMDBIDList = [];
-            for(let element in parsedData) {
-                tempIMDBIDList.push(parsedData[element].omdbData.imdbID)
+            try {
+                for(let element in parsedData) {
+                    tempIMDBIDList.push(parsedData[element].omdbData.imdbID)
+                }
+            } catch (error) {
+                return
             }
+
             return tempIMDBIDList;
         }
     }
@@ -55,19 +60,29 @@ else {
         let entityData = getEntity();
         let winnerData = getWinner();
         let imdbData = getIMDBID();
-
+        console.log(yearData)
         const table = document.querySelector('#movieDataTable');
 
         let findingsLength = yearData.length;
         let string = "";
 
         // for(let )
-        let link = 'https://www.imdb.com/title/'
-        for(let index = 0; index < findingsLength; index++) {
-                    string = "<tr> <td>" + yearData[index] +  "</td> <td>" + categoryData[index] + "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index] + "</td> <td>" + "<a href=" + link + imdbID[index] + ">" + 'LINK' + "</a> </td> </tr>";
+        let link = "https://www.imdb.com/title/"
+        for (let index = 0; index < findingsLength; index++) {
+                if (imdbData === undefined || imdbData[index] === undefined) {
+                    string = "<tr> <td>" + yearData[index] + "</td> <td>" + categoryData[index] +
+                        "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index]
+                        + "</td> <td>" + "No IMDB Link" + "</td> </tr>";
                     table.innerHTML += string;
+                    continue;
                 }
 
+            string = "<tr> <td>" + yearData[index] + "</td> <td>" + categoryData[index] +
+                "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index] +
+                "</td> <td>" + "<a href=" + link + imdbData[index] + ">" + 'LINK' + "</a> </td> </tr>";
+            table.innerHTML += string;
+        }
     }
     addTableData();
+
 }

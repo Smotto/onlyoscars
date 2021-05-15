@@ -64,6 +64,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 There are two case testing files using Postman:
+Import these files into Postman, these are collections.
 * Case Testing OnlyOscars.postman_collection.json
 * JSON Only Case Testing.postman_collection.json
 
