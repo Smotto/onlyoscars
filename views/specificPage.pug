@@ -10,9 +10,14 @@ block content
             .position
                 .wrapper
                     div#movieDataID(hidden='true') #{filteringFindings}
-                    p#winner
-                    p#entity
-                    p#year
+                    table#movieDataTable(style='width:100%')
+                        tr
+                            th#year-header Year
+                            th#category-header Category
+                            th#entity-header Movie Name
+                            th#winner-header Winner
+
+
 
 
 

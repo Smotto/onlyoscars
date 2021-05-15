@@ -1,101 +1,73 @@
 console.log("Specific Page F12 Console.")
 
 let movieData = document.getElementById('movieDataID');
-let parsedData = JSON.parse(movieData.innerText);
-
-//for (let element in parsedData)
-//{
-//console.log(parsedData[element]);
-//}
-
-let entity = [];
-
-function getEntity() {
-    for (let element in parsedData) {
-        entity.push(parsedData[element].entity)
-    }
-
-   // console.log(entity);
-
-
-    let string = "";
-    for (let index = 0; index < entity.length; index++) {
-        string += " " + entity[index] + "\n";
-    }
-
-    document.getElementById('entity').innerText = string;
+if(movieData.innerText < 3) {
+    window.alert("No Results, redirecting to homepage");
+    window.history.back();
 }
-
-getEntity();
-
-let movieYear = [];
-
-function getYear() {
+else {
+    let parsedData = JSON.parse(movieData.innerText);
     for (let element in parsedData) {
-        movieYear.push(parsedData[element].year)
-    }
 
-     console.log(movieYear);
-
-     let string = "";
-     for (let index = 0; index < movieYear.length; index++) {
-          string +=  movieYear[index] + "\n";
-      }
-     document.getElementById('year').innerText = string;
-}
-
-    getYear();
-
-    let winner = [];
-
-    function getWinner() {
-        for (let element in parsedData) {
-            winner.push(parsedData[element].winner)
+        function getEntity() {
+            let entity = [];
+            for (let element in parsedData) {
+                entity.push(parsedData[element].entity)
+            }
+            return entity;
         }
 
-        // console.log(winner);
+        function getYear() {
+            let movieYear = [];
+            for (let element in parsedData) {
+                movieYear.push(parsedData[element].year)
+            }
+            return movieYear
+        }
 
+        function getWinner() {
+            let winner = [];
+            for (let element in parsedData) {
+                winner.push(parsedData[element].winner)
+            }
+            return winner
+        }
+
+        function getCategory() {
+            let tempCategory = [];
+            for (let element in parsedData) {
+                tempCategory.push(parsedData[element].category)
+            }
+            return tempCategory
+        }
+        function getIMDBID() {
+            let tempIMDBIDList = [];
+            for(let element in parsedData) {
+                tempIMDBIDList.push(parsedData[element].omdbData.imdbID)
+            }
+            return tempIMDBIDList;
+        }
+    }
+
+    function addTableData() {
+        let yearData = getYear();
+        let categoryData = getCategory();
+        let entityData = getEntity();
+        let winnerData = getWinner();
+        let imdbData = getIMDBID();
+
+        const table = document.querySelector('#movieDataTable');
+
+        let findingsLength = yearData.length;
         let string = "";
-        for (let index = 0; index < movieYear.length; index++) {
-            string +=  winner[index] + "\n";
 
-        }
+        // for(let )
+        let link = 'https://www.imdb.com/title/'
+        for(let index = 0; index < findingsLength; index++) {
+                    string = "<tr> <td>" + yearData[index] +  "</td> <td>" + categoryData[index] + "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index] + "</td> <td>" + "<a href=" + link + imdbID[index] + ">" + 'LINK' + "</a> </td> </tr>";
+                    table.innerHTML += string;
+                }
 
-
-        document.getElementById('winner').innerText = string;
     }
-
-    getWinner();
-
-    let tempCategory = [];
-
-    function getCategory() {
-        for (let element in parsedData) {
-            tempCategory.push(parsedData[element].category)
-        }
-        let category = [...new Set(tempCategory)]
-
-        console.log(category);
-    }
-
-    getCategory();
-
-
-
-//let movieDataJSONParsed = JSON.parse(document.getElementById('movieDataID').innerText);
-//console.log(movieDataJSONParsed);
-
-//function displayData() {
-//    for (let i in movieDataJSONParsed) {
-//        let row =`<tr>
-//            <td>${movieDataJSONParsed[i].entity}</td>
-//           <td>${movieDataJSONParsed[i].movieYear}</td>
-//            <td>${movieDataJSONParsed[i].winner}</td>
-//         </tr>`
-
-//        let table = $('#table-body')
-//       table.append(row);
-
-//    }
-//}
-//displayData();
+    addTableData();
+}
