@@ -69,21 +69,17 @@ else {
         // for(let )
         let link = "https://www.imdb.com/title/"
         for (let index = 0; index < findingsLength; index++) {
-            console.log(imdbData[0])
-            try {
-                if (imdbData[index] === undefined) {
-                    string = "<tr> <td>" + yearData[index] + "</td> <td>" + categoryData[index] + "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index]
+                if (imdbData === undefined || imdbData[index] === undefined) {
+                    string = "<tr> <td>" + yearData[index] + "</td> <td>" + categoryData[index] +
+                        "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index]
                         + "</td> <td>" + "No IMDB Link" + "</td> </tr>";
                     table.innerHTML += string;
                     continue;
                 }
-            } catch(error) {
-                // string = "<tr> <td>" + yearData[index] + "</td> <td>" + categoryData[index] + "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index] + "</td> <td>" + "<a href=" + link + imdbData[index] + ">" + 'LINK' + "</a> </td> </tr>";
-                // table.innerHTML += string;
-                // continue;
-            }
 
-            string = "<tr> <td>" + yearData[index] + "</td> <td>" + categoryData[index] + "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index] + "</td> <td>" + "<a href=" + link + imdbData[index] + ">" + 'LINK' + "</a> </td> </tr>";
+            string = "<tr> <td>" + yearData[index] + "</td> <td>" + categoryData[index] +
+                "</td> <td>" + entityData[index] + "</td> <td>" + winnerData[index] +
+                "</td> <td>" + "<a href=" + link + imdbData[index] + ">" + 'LINK' + "</a> </td> </tr>";
             table.innerHTML += string;
         }
     }
