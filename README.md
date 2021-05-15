@@ -68,7 +68,7 @@ You need the following:
 * Webstorm (optional IDE)
 * NodeJs
 * Git
-$1 for omdbAPI if you don't have the json file. http://www.omdbapi.com/
+* $1 for omdbAPI if you don't have the json file. http://www.omdbapi.com/
 
 ### Installation
 
