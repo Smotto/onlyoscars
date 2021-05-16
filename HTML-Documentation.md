@@ -224,9 +224,22 @@ This route returns every movie by the category and winner by adding `/api/?categ
 Example: `/api/?category=WRITING&winner=true`
 
 ```json
-{
-  ***************JSON HERE************** 
-}
+
+ {
+   "category": "WRITING",
+   "entity": "Hans Kraly",
+   "winner": true,
+   "year": 1928,
+   "onlyOscarsID": 70
+ },
+ {
+   "category": "WRITING",
+   "entity": "The Big House",
+   "winner": true,
+   "year": 1929,
+   "onlyOscarsID": 111
+  }
+
 ```
 ## Movie Data: category and not winner
 
@@ -236,9 +249,27 @@ This route returns every movie by the category and not winner by adding `/api/?c
 
 Example: `/api/?category=DIRECTING&winner=false`
 ```json
-{
-  ***************JSON HERE**************
-}
+ {
+   "category":"DIRECTING",
+   "entity":"Lionel Barrymore",
+   "winner":false,
+   "year":1928,
+   "onlyOscarsID":56
+ },
+ {
+   "category": "DIRECTING",
+   "entity": "Harry Beaumont",
+   "winner": false,
+   "year": 1928,
+   "onlyOscarsID": 57
+ },
+ {
+   "category" :"DIRECTING",
+   "entity":"Irving Cummings",
+   "winner":false,
+   "year":1928,
+   "onlyOscarsID":58
+ }
 ```
 ## Movie Data: category and year
 ### GET `/api/category/0000/year/----`
@@ -248,9 +279,27 @@ This route returns every movie by the category and year by adding `/api/category
 Example: `/api/category/DIRECTING/year/1930`
 
 ```json
-{
-  ***************JSON HERE**************
-}
+ {
+   "category": "DIRECTING",
+   "entity": "Cimarron",
+   "winner": false,
+   "year": 1930,
+   "onlyOscarsID": 135
+ },
+ {
+   "category":"DIRECTING",
+   "entity":"A Free Soul",
+   "winner":false,
+   "year":1930,
+   "onlyOscarsID":136
+ },
+ {
+   "category":"DIRECTING",
+   "entity":"The Front Page",
+   "winner":false,
+   "year":1930,
+   "onlyOscarsID":137
+ }
 ```
 ## Movie Data: category, year, and winner
 ### GET `/api/category/0000/year/----/winner/true`
@@ -261,7 +310,11 @@ Example: `/api/category/CINEMATOGRAPHY/year/1931/winner/true`
 
 ```json
 {
-***************JSON HERE**************
+  "category": "CINEMATOGRAPHY",
+  "entity": "Shanghai Express",
+  "winner": true,
+  "year": 1931,
+  "onlyOscarsID": 176
 }
 ```
 ## Movie Data: category, year, and not winner
@@ -272,9 +325,27 @@ This route returns every movie by the category, year and not winner by adding ``
 Example: `/api/category/DIRECTING/year/1935/winner/false`
 
 ```json
-{
-  ***************JSON HERE**************
-}
+ {
+   "category": "DIRECTING",
+   "entity": "Captain Blood",
+   "winner": false,
+   "year": 1935,
+   "onlyOscarsID": 373
+ },
+ {
+   "category":"DIRECTING",
+   "entity":"The Lives of a Bengal Lancer",
+   "winner":false,
+   "year":1935,
+   "onlyOscarsID":375
+ },
+ {
+   "category":"DIRECTING",
+   "entity":"Mutiny on the Bounty",
+   "winner":false,
+   "year":1935,
+   "onlyOscarsID":376
+ }
 ```
 
 ## Movie Data: year and winner
@@ -285,9 +356,34 @@ This route returns every movie by the year and winner by adding `/api/?year=----
 Example: `/api/?year=1935&winner=true`
 
 ```json
-{
-  ***************JSON HERE**************
-}
+ {
+   "category":"ACTOR",
+   "entity":"Victor McLaglen",
+   "winner":true,
+   "year":1935,
+   "onlyOscarsID":346
+ },
+ {
+   "category": "ACTRESS"
+   "entity": "Bette Davis",
+   "winner": true,
+   "year": 1935,
+   "onlyOscarsID": 351
+ },
+ {
+  "category":"ART DIRECTION",
+  "entity":"The Dark Angel",
+  "winner":true,
+  "year":1935,
+  "onlyOscarsID":355
+ },
+ {
+   "category": "ASSISTANT DIRECTOR",
+   "entity": "The Lives of a Bengal Lancer",
+   "winner": true,
+   "year": 1935,
+   "onlyOscarsID": 360
+ }
 ```
 
 ## Movie Data: year and not winner
@@ -298,9 +394,27 @@ This route returns every movie by the year and not winner by adding `/api/?year=
 Example: `/api/?year=1941&winner=false`
 
 ```json
-{
-  ***************JSON HERE**************
-}
+ {
+  "category":"ACTOR",
+  "entity":"Cary Grant",
+  "winner":false,
+  "year":1941,
+  "onlyOscarsID":1141
+ },
+ {
+  "category": "ACTOR",
+  "entity": "Walter Huston",
+  "winner": false,
+  "year": 1941,
+  "onlyOscarsID": 1142,
+ },
+ {
+   "category":"ACTOR",
+   "entity":"Robert Montgomery",
+   "winner":false,
+   "year":1941,
+   "onlyOscarsID":1143
+ }
 ```
 
 
