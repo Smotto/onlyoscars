@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 id="csc-131-pied-piper">CSC 131 - Pied Piper</h1>
+<h2 id="movie-data">Movie Data</h2>
+<p>A JSON file containing the movie data is stored locally.
+    Each movie has five keys if additional information is not found using the OMDB API: category, winner, entity, year,
+    and onlyOscarsID.</p>
+<pre><code class="lang-json">{
+  <span class="hljs-attr">"category"</span>: string,
+  <span class="hljs-attr">"entity"</span>: string,
+  <span class="hljs-attr">"winner"</span>: boolean,
+  <span class="hljs-attr">"year"</span>: number,
+  <span class="hljs-attr">"onlyOscarsID"</span>: number
+}
+</code></pre>
+<p>If additional movie data is found using the OMDB API, the object contains an additional nested object: omdbDATA,
+    containing the keys Tile, Year, Rated, Released, Runtime, Genre, Director, Writer, Actors, Plot, Language, Country,
+    Awards, Poster, an array of objects, Ratings, where each array contains object keys Source and Value, Metascore,
+    imdbRating, imdbVotes, imdbID, Type, DVD, BoxOffice, Production, Website, and Response. </p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">"category"</span>: <span class="hljs-built_in">string</span>,
+  <span class="hljs-string">"entity"</span>: <span class="hljs-built_in">string</span>,
+  <span class="hljs-string">"winner"</span>: boolean,
+  <span class="hljs-string">"year"</span>: <span class="hljs-keyword">number</span>,
+  <span class="hljs-string">"onlyOscarsID"</span>: <span class="hljs-keyword">number</span>,
+  <span class="hljs-string">"omdbData"</span>:{
+      <span class="hljs-string">"Title"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Year"</span>: <span class="hljs-built_in">string</span><span
+            class="hljs-comment">",</span>
+      <span class="hljs-string">"Rated"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Released"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Runtime"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Genre"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Director"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Writer"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Actors"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Plot"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Language"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Country"</span>: <span class="hljs-built_in">string</span><span
+            class="hljs-comment">",</span>
+      <span class="hljs-string">"Awards"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Poster"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Ratings"</span>:[
+         {
+            <span class="hljs-string">"Source"</span>: <span class="hljs-built_in">string</span>,
+            <span class="hljs-string">"Value"</span>: <span class="hljs-built_in">string</span>
+         }
+      ],
+      <span class="hljs-string">"Metascore"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"imdbRating"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"imdbVotes"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"imdbID"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Type"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"DVD"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"BoxOffice"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Production"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Website"</span>: <span class="hljs-built_in">string</span>,
+      <span class="hljs-string">"Response"</span>: <span class="hljs-built_in">string</span>
+   }
+}
+</code></pre>
+<p>In some cases, if additional movie information is not found using the OMDB API the object contains an additional
+    nested object, omdbData</p>
+<pre><code class="lang-json">{
+  <span class="hljs-attr">"category"</span>: string,
+  <span class="hljs-attr">"entity"</span>: string,
+  <span class="hljs-attr">"winner"</span>: boolean,
+  <span class="hljs-attr">"year"</span>: number,
+  <span class="hljs-attr">"onlyOscarsID"</span>: number,
+  <span class="hljs-attr">"omdbData"</span>:{
+     <span class="hljs-attr">"Response"</span>: boolean,
+     <span class="hljs-attr">"Error"</span>: string
+  }
+}
+</code></pre>
+<h1 id="root-url-is-http-localhost-3000-">Root URL is <code>http://localhost:3000</code></h1>
+<h2 id="movie-data-winner">Movie Data: winner</h2>
+<h3 id="get-api-json-winner-true-">GET <code>/api/json/?winner=true</code></h3>
+<p>This route returns every movie that is a winner by adding <code>/api/json/?winner=true</code> after the root URL.
+    This collection query returns the movies in a JSON format.</p>
+<p>Example: </p>
+<pre><code class="lang-json">{
+   <span class="hljs-attr">"category"</span>:<span class="hljs-string">"DIRECTING"</span>,
+   <span class="hljs-attr">"entity"</span>:<span class="hljs-string">"Frank Lloyd"</span>,
+   <span class="hljs-attr">"winner"</span>:<span class="hljs-literal">true</span>,
+   <span class="hljs-attr">"year"</span>:<span class="hljs-number">1928</span>,
+   <span class="hljs-attr">"onlyOscarsID"</span>:<span class="hljs-number">59</span>,
+   <span class="hljs-attr">"omdbData"</span>:{
+      <span class="hljs-attr">"Title"</span>:<span class="hljs-string">"Frank Lloyd Wright"</span>,
+      <span class="hljs-attr">"Year"</span>:<span class="hljs-string">"1998"</span>,
+      <span class="hljs-attr">"Rated"</span>:<span class="hljs-string">"TV-PG"</span>,
+      <span class="hljs-attr">"Released"</span>:<span class="hljs-string">"23 Jan 1998"</span>,
+      <span class="hljs-attr">"Runtime"</span>:<span class="hljs-string">"146 min"</span>,
+      <span class="hljs-attr">"Genre"</span>:<span class="hljs-string">"Documentary, Biography, History"</span>,
+      <span class="hljs-attr">"Director"</span>:<span class="hljs-string">"Ken Burns, Lynn Novick"</span>,
+      <span class="hljs-attr">"Writer"</span>:<span class="hljs-string">"Geoffrey C. Ward"</span>,
+      <span class="hljs-attr">"Actors"</span>:<span class="hljs-string">"Edward Herrmann, Philip Bosco, Julie Harris, Sab Shimono"</span>,
+      <span class="hljs-attr">"Plot"</span>:<span class="hljs-string">"A biography of the life and work of the American architect."</span>,
+      <span class="hljs-attr">"Language"</span>:<span class="hljs-string">"English"</span>,
+      <span class="hljs-attr">"Country"</span>:<span class="hljs-string">"USA"</span>,
+      <span class="hljs-attr">"Awards"</span>:<span class="hljs-string">"Nominated for 1 Primetime Emmy. Another 3 wins &amp; 1 nomination."</span>,
+      <span class="hljs-attr">"Poster"</span>:<span class="hljs-string">"https://m.media-amazon.com/images/M/MV5BMTI2MzkyMDU5OV5BMl5BanBnXkFtZTcwNjc4MzgxMQ@@._V1_SX300.jpg"</span>,
+      <span class="hljs-attr">"Ratings"</span>:[
+         {
+            <span class="hljs-attr">"Source"</span>:<span class="hljs-string">"Internet Movie Database"</span>,
+            <span class="hljs-attr">"Value"</span>:<span class="hljs-string">"7.7/10"</span>
+         }
+      ],
+      <span class="hljs-attr">"Metascore"</span>:<span class="hljs-string">"N/A"</span>,
+      <span class="hljs-attr">"imdbRating"</span>:<span class="hljs-string">"7.7"</span>,
+      <span class="hljs-attr">"imdbVotes"</span>:<span class="hljs-string">"772"</span>,
+      <span class="hljs-attr">"imdbID"</span>:<span class="hljs-string">"tt0144937"</span>,
+      <span class="hljs-attr">"Type"</span>:<span class="hljs-string">"movie"</span>,
+      <span class="hljs-attr">"DVD"</span>:<span class="hljs-string">"29 Jul 2008"</span>,
+      <span class="hljs-attr">"BoxOffice"</span>:<span class="hljs-string">"N/A"</span>,
+      <span class="hljs-attr">"Production"</span>:<span class="hljs-string">"N/A"</span>,
+      <span class="hljs-attr">"Website"</span>:<span class="hljs-string">"N/A"</span>,
+      <span class="hljs-attr">"Response"</span>:<span class="hljs-string">"True"</span>
+   }
+}
+</code></pre>
+<h2 id="movie-data-category">Movie Data: category</h2>
+<h3 id="get-api-json-category-">GET <code>/api/json/?category=</code></h3>
+<p> This route returns every movie of a category by adding <code>/api/json/?category=CATEGORY%HERE</code>, replacing
+    <code>CATEGORY%20HERE</code> with the chosen category, (<code>%20</code> for spaces), after the root URL. This
+    collection query returns the movies in a JSON format.</p>
+<p> Example: GET <code>/api/json/?category=ACTRESS%20IN%20A%20SUPPORTING%20ROLE</code></p>
+<pre><code class="lang-json">  {
+      <span class="hljs-string">"category"</span>: <span class="hljs-string">"ACTRESS IN A SUPPORTING ROLE"</span>,
+      <span class="hljs-string">"entity"</span>: <span class="hljs-string">"Beulah Bondi"</span>,
+      <span class="hljs-string">"winner"</span>: false,
+      <span class="hljs-string">"year"</span>: <span class="hljs-number">1936</span>,
+      <span class="hljs-string">"onlyOscarsID"</span>: <span class="hljs-number">453</span>,
+      <span class="hljs-string">"omdbData"</span>: {
+        <span class="hljs-string">"Response"</span>: <span class="hljs-string">"False"</span>,
+        <span class="hljs-string">"Error"</span>: <span class="hljs-string">"Movie not found!"</span>
+      }
+    },
+    {
+      <span class="hljs-string">"category"</span>: <span class="hljs-string">"ACTRESS IN A SUPPORTING ROLE"</span>,
+      <span class="hljs-string">"entity"</span>: <span class="hljs-string">"Alice Brady"</span>,
+      <span class="hljs-string">"winner"</span>: false,
+      <span class="hljs-string">"year"</span>: <span class="hljs-number">1936</span>,
+      <span class="hljs-string">"onlyOscarsID"</span>: <span class="hljs-number">454</span>,
+      <span class="hljs-string">"omdbData"</span>: {
+        <span class="hljs-string">"Title"</span>: <span
+            class="hljs-string">"Alice Brady in a Liberty Loan Appeal"</span>,
+        <span class="hljs-string">"Year"</span>: <span class="hljs-string">"1918"</span>,
+        <span class="hljs-string">"Rated"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"Released"</span>: <span class="hljs-string">"01 Oct 1918"</span>,
+        <span class="hljs-string">"Runtime"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"Genre"</span>: <span class="hljs-string">"Short"</span>,
+        <span class="hljs-string">"Director"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"Writer"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"Actors"</span>: <span class="hljs-string">"Alice Brady"</span>,
+        <span class="hljs-string">"Plot"</span>: <span class="hljs-string">"Alice Brady shows women how their contributions help provide soldiers' uniforms."</span>,
+        <span class="hljs-string">"Language"</span>: <span class="hljs-string">"English"</span>,
+        <span class="hljs-string">"Country"</span>: <span class="hljs-string">"USA"</span>,
+        <span class="hljs-string">"Awards"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"Poster"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"Ratings"</span>: [],
+        <span class="hljs-string">"Metascore"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"imdbRating"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"imdbVotes"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"imdbID"</span>: <span class="hljs-string">"tt0486256"</span>,
+        <span class="hljs-string">"Type"</span>: <span class="hljs-string">"movie"</span>,
+        <span class="hljs-string">"DVD"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"BoxOffice"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"Production"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"Website"</span>: <span class="hljs-string">"N/A"</span>,
+        <span class="hljs-string">"Response"</span>: <span class="hljs-string">"True"</span>
+      }
+    }
+</code></pre>
+<h2 id="movie-data-year">Movie Data: year</h2>
+<h3 id="get-api-year-">GET <code>/api/?year=</code></h3>
+<p>This route returns every movie of a year by adding <code>/api/json/?year=0000</code>, replacing <code>0000</code>
+    with the chosen year after the root URL. This collection query returns the movies in a JSON format.</p>
+<p>Example: <code>/api/year/?year=1945</code></p>
+<pre><code class="lang-json">  {
+      <span class="hljs-string">"category"</span>:<span class="hljs-string">"ACTOR"</span>,
+      <span class="hljs-string">"entity"</span>:<span class="hljs-string">"Bing Crosby"</span>,
+      <span class="hljs-string">"winner"</span>:<span class="hljs-literal">false</span>,
+      <span class="hljs-string">"year"</span>:<span class="hljs-number">1945</span>,
+      <span class="hljs-string">"onlyOscarsID"</span>:<span class="hljs-number">1888</span>
+   },
+   {
+      <span class="hljs-string">"category"</span>:<span class="hljs-string">"ACTOR"</span>,
+      <span class="hljs-string">"entity"</span>:<span class="hljs-string">"Gene Kelly"</span>,
+      <span class="hljs-string">"winner"</span>:<span class="hljs-literal">false</span>,
+      <span class="hljs-string">"year"</span>:<span class="hljs-number">1945</span>,
+      <span class="hljs-string">"onlyOscarsID"</span>:<span class="hljs-number">1889</span>
+   },
+   {
+      <span class="hljs-string">"category"</span>:<span class="hljs-string">"ACTOR"</span>,
+      <span class="hljs-string">"entity"</span>:<span class="hljs-string">"Ray Milland"</span>,
+      <span class="hljs-string">"winner"</span>:<span class="hljs-literal">true</span>,
+      <span class="hljs-string">"year"</span>:<span class="hljs-number">1945</span>,
+      <span class="hljs-string">"onlyOscarsID"</span>:<span class="hljs-number">1890</span>
+   }
+</code></pre>
+<h2 id="movie-data-category-and-winner">Movie Data: category and winner</h2>
+<h3 id="get-api-category-0000-winner-true-">GET <code>/api/?category=0000&amp;winner=true</code></h3>
+<p>This route returns every movie by the category and winner by adding <code>/api/?category=0000&amp;winner=true</code>,
+    replacing <code>0000</code> with appropriate category and <code>true</code> indicating Oscar winners. This
+    collection query returns the movies in a JSON format.</p>
+<p>Example: <code>/api/?category=WRITING&amp;winner=true</code></p>
+<pre><code class="lang-json">
+ {
+   <span class="hljs-string">"category"</span>: <span class="hljs-string">"WRITING"</span>,
+   <span class="hljs-string">"entity"</span>: <span class="hljs-string">"Hans Kraly"</span>,
+   <span class="hljs-string">"winner"</span>: <span class="hljs-literal">true</span>,
+   <span class="hljs-string">"year"</span>: <span class="hljs-number">1928</span>,
+   <span class="hljs-string">"onlyOscarsID"</span>: <span class="hljs-number">70</span>
+ },
+ {
+   <span class="hljs-string">"category"</span>: <span class="hljs-string">"WRITING"</span>,
+   <span class="hljs-string">"entity"</span>: <span class="hljs-string">"The Big House"</span>,
+   <span class="hljs-string">"winner"</span>: <span class="hljs-literal">true</span>,
+   <span class="hljs-string">"year"</span>: <span class="hljs-number">1929</span>,
+   <span class="hljs-string">"onlyOscarsID"</span>: <span class="hljs-number">111</span>
+  }
+</code></pre>
+<h2 id="movie-data-category-and-not-winner">Movie Data: category and not winner</h2>
+<h3 id="get-api-category-0000-winner-false-">GET <code>/api/?category=0000&amp;winner=false</code></h3>
+<p>This route returns every movie by the category and not winner by adding
+    <code>/api/?category=0000&amp;winner=false</code>, replacing <code>0000</code> with appropriate category and <code>false</code>
+    indicating Oscars that did not win. This collection query returns the movies in a JSON format.</p>
+<p>Example: <code>/api/?category=DIRECTING&amp;winner=false</code></p>
+<pre><code class="lang-json"> {
+   <span class="hljs-string">"category"</span>:<span class="hljs-string">"DIRECTING"</span>,
+   <span class="hljs-string">"entity"</span>:<span class="hljs-string">"Lionel Barrymore"</span>,
+   <span class="hljs-string">"winner"</span>:<span class="hljs-literal">false</span>,
+   <span class="hljs-string">"year"</span>:<span class="hljs-number">1928</span>,
+   <span class="hljs-string">"onlyOscarsID"</span>:<span class="hljs-number">56</span>
+ },
+ {
+   <span class="hljs-string">"category"</span>: <span class="hljs-string">"DIRECTING"</span>,
+   <span class="hljs-string">"entity"</span>: <span class="hljs-string">"Harry Beaumont"</span>,
+   <span class="hljs-string">"winner"</span>: <span class="hljs-literal">false</span>,
+   <span class="hljs-string">"year"</span>: <span class="hljs-number">1928</span>,
+   <span class="hljs-string">"onlyOscarsID"</span>: <span class="hljs-number">57</span>
+ },
+ {
+   <span class="hljs-string">"category"</span> :<span class="hljs-string">"DIRECTING"</span>,
+   <span class="hljs-string">"entity"</span>:<span class="hljs-string">"Irving Cummings"</span>,
+   <span class="hljs-string">"winner"</span>:<span class="hljs-literal">false</span>,
+   <span class="hljs-string">"year"</span>:<span class="hljs-number">1928</span>,
+   <span class="hljs-string">"onlyOscarsID"</span>:<span class="hljs-number">58</span>
+ }
+</code></pre>
+<h2 id="movie-data-category-and-year">Movie Data: category and year</h2>
+<h3 id="get-api-category-0000-year-">GET <code>/api/category/0000/year/----</code></h3>
+<p>This route returns every movie by the category and year by adding <code>/api/category/0000/year/---</code>, replacing
+    <code>0000</code> with appropriate category and <code>----</code> with year. This collection query returns the
+    movies in a JSON format.</p>
+<p>Example: <code>/api/category/DIRECTING/year/1930</code></p>
+<pre><code class="lang-json"> {
+   <span class="hljs-string">"category"</span>: <span class="hljs-string">"DIRECTING"</span>,
+   <span class="hljs-string">"entity"</span>: <span class="hljs-string">"Cimarron"</span>,
+   <span class="hljs-string">"winner"</span>: <span class="hljs-literal">false</span>,
+   <span class="hljs-string">"year"</span>: <span class="hljs-number">1930</span>,
+   <span class="hljs-string">"onlyOscarsID"</span>: <span class="hljs-number">135</span>
+ },
+ {
+   <span class="hljs-string">"category"</span>:<span class="hljs-string">"DIRECTING"</span>,
+   <span class="hljs-string">"entity"</span>:<span class="hljs-string">"A Free Soul"</span>,
+   <span class="hljs-string">"winner"</span>:<span class="hljs-literal">false</span>,
+   <span class="hljs-string">"year"</span>:<span class="hljs-number">1930</span>,
+   <span class="hljs-string">"onlyOscarsID"</span>:<span class="hljs-number">136</span>
+ },
+ {
+   <span class="hljs-string">"category"</span>:<span class="hljs-string">"DIRECTING"</span>,
+   <span class="hljs-string">"entity"</span>:<span class="hljs-string">"The Front Page"</span>,
+   <span class="hljs-string">"winner"</span>:<span class="hljs-literal">false</span>,
+   <span class="hljs-string">"year"</span>:<span class="hljs-number">1930</span>,
+   <span class="hljs-string">"onlyOscarsID"</span>:<span class="hljs-number">137</span>
+ }
+</code></pre>
+<h2 id="movie-data-category-year-and-winner">Movie Data: category, year, and winner</h2>
+<h3 id="get-api-category-0000-year-winner-true-">GET <code>/api/category/0000/year/----/winner/true</code></h3>
+<p>This route returns every movie by the category, year and winner by adding <code>/api/category/0000/year/----/winner/true</code>,
+    replacing <code>0000</code> with appropriate category, <code>----</code> with year and <code>true</code> which
+    indicates Oscar winners. This collection query returns the movies in a JSON format.</p>
+<p>Example: <code>/api/category/CINEMATOGRAPHY/year/1931/winner/true</code></p>
+<pre><code class="lang-json">{
+  <span class="hljs-attr">"category"</span>: <span class="hljs-string">"CINEMATOGRAPHY"</span>,
+  <span class="hljs-attr">"entity"</span>: <span class="hljs-string">"Shanghai Express"</span>,
+  <span class="hljs-attr">"winner"</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">"year"</span>: <span class="hljs-number">1931</span>,
+  <span class="hljs-attr">"onlyOscarsID"</span>: <span class="hljs-number">176</span>
+}
+</code></pre>
+<h2 id="movie-data-category-year-and-not-winner">Movie Data: category, year, and not winner</h2>
+<h3 id="get-api-category-0000-year-winner-false-">GET <code>/api/category/0000/year/----/winner/false</code></h3>
+<p>This route returns every movie by the category, year and not winner by adding <code>/api/category/0000/year/----/winner/false</code>,
+    replacing <code>0000</code> with appropriate category, <code>----</code> with year and <code>false</code> which
+    indicates Oscars that did not win. This collection query returns the movies in a JSON format.</p>
+<p>Example: <code>/api/category/DIRECTING/year/1935/winner/false</code></p>
+<pre><code class="lang-json"> {
+   <span class="hljs-comment">"category"</span>: <span class="hljs-comment">"DIRECTING"</span>,
+   <span class="hljs-comment">"entity"</span>: <span class="hljs-comment">"Captain Blood"</span>,
+   <span class="hljs-comment">"winner"</span>: <span class="hljs-keyword">false</span>,
+   <span class="hljs-comment">"year"</span>: <span class="hljs-number">1935</span>,
+   <span class="hljs-comment">"onlyOscarsID"</span>: <span class="hljs-number">373</span>
+ },
+ {
+   <span class="hljs-comment">"category"</span>:<span class="hljs-comment">"DIRECTING"</span>,
+   <span class="hljs-comment">"entity"</span>:<span class="hljs-comment">"The Lives of a Bengal Lancer"</span>,
+   <span class="hljs-comment">"winner"</span>:<span class="hljs-keyword">false</span>,
+   <span class="hljs-comment">"year"</span>:<span class="hljs-number">1935</span>,
+   <span class="hljs-comment">"onlyOscarsID"</span>:<span class="hljs-number">375</span>
+ },
+ {
+   <span class="hljs-comment">"category"</span>:<span class="hljs-comment">"DIRECTING"</span>,
+   <span class="hljs-comment">"entity"</span>:<span class="hljs-comment">"Mutiny on the Bounty"</span>,
+   <span class="hljs-comment">"winner"</span>:<span class="hljs-keyword">false</span>,
+   <span class="hljs-comment">"year"</span>:<span class="hljs-number">1935</span>,
+   <span class="hljs-comment">"onlyOscarsID"</span>:<span class="hljs-number">376</span>
+ }
+</code></pre>
+<h2 id="movie-data-year-and-winner">Movie Data: year and winner</h2>
+<h3 id="get-api-year-winner-true-">GET <code>/api/?year=----&amp;winner=true</code></h3>
+<p>This route returns every movie by the year and winner by adding <code>/api/?year=----&amp;winner=true</code>,
+    replacing <code>----</code> with year and <code>true</code> indicating Oscar winners. This collection query returns
+    the movies in a JSON format.</p>
+<p>Example: <code>/api/?year=1935&amp;winner=true</code></p>
+<pre><code class="lang-json"> {
+   <span class="hljs-comment">"category"</span>:<span class="hljs-comment">"ACTOR"</span>,
+   <span class="hljs-comment">"entity"</span>:<span class="hljs-comment">"Victor McLaglen"</span>,
+   <span class="hljs-comment">"winner"</span>:<span class="hljs-keyword">true</span>,
+   <span class="hljs-comment">"year"</span>:<span class="hljs-number">1935</span>,
+   <span class="hljs-comment">"onlyOscarsID"</span>:<span class="hljs-number">346</span>
+ },
+ {
+   <span class="hljs-comment">"category"</span>: <span class="hljs-comment">"ACTRESS"</span>
+   <span class="hljs-comment">"entity"</span>: <span class="hljs-comment">"Bette Davis"</span>,
+   <span class="hljs-comment">"winner"</span>: <span class="hljs-keyword">true</span>,
+   <span class="hljs-comment">"year"</span>: <span class="hljs-number">1935</span>,
+   <span class="hljs-comment">"onlyOscarsID"</span>: <span class="hljs-number">351</span>
+ },
+ {
+  <span class="hljs-comment">"category"</span>:<span class="hljs-comment">"ART DIRECTION"</span>,
+  <span class="hljs-comment">"entity"</span>:<span class="hljs-comment">"The Dark Angel"</span>,
+  <span class="hljs-comment">"winner"</span>:<span class="hljs-keyword">true</span>,
+  <span class="hljs-comment">"year"</span>:<span class="hljs-number">1935</span>,
+  <span class="hljs-comment">"onlyOscarsID"</span>:<span class="hljs-number">355</span>
+ },
+ {
+   <span class="hljs-comment">"category"</span>: <span class="hljs-comment">"ASSISTANT DIRECTOR"</span>,
+   <span class="hljs-comment">"entity"</span>: <span class="hljs-comment">"The Lives of a Bengal Lancer"</span>,
+   <span class="hljs-comment">"winner"</span>: <span class="hljs-keyword">true</span>,
+   <span class="hljs-comment">"year"</span>: <span class="hljs-number">1935</span>,
+   <span class="hljs-comment">"onlyOscarsID"</span>: <span class="hljs-number">360</span>
+ }
+</code></pre>
+<h2 id="movie-data-year-and-not-winner">Movie Data: year and not winner</h2>
+<h3 id="get-api-year-winner-false-">GET <code>/api/?year=----&amp;winner=false</code></h3>
+<p>This route returns every movie by the year and not winner by adding <code>/api/?year=----&amp;winner=false</code>,
+    replacing <code>----</code> with year and <code>false</code> indicating Oscar not winners. This collection query
+    returns the movies in a JSON format.</p>
+<p>Example: <code>/api/?year=1941&amp;winner=false</code></p>
+<pre><code class="lang-json"> {
+  <span class="hljs-string">"category"</span>:<span class="hljs-string">"ACTOR"</span>,
+  <span class="hljs-string">"entity"</span>:<span class="hljs-string">"Cary Grant"</span>,
+  <span class="hljs-string">"winner"</span>:<span class="hljs-literal">false</span>,
+  <span class="hljs-string">"year"</span>:<span class="hljs-number">1941</span>,
+  <span class="hljs-string">"onlyOscarsID"</span>:<span class="hljs-number">1141</span>
+ },
+ {
+  <span class="hljs-string">"category"</span>: <span class="hljs-string">"ACTOR"</span>,
+  <span class="hljs-string">"entity"</span>: <span class="hljs-string">"Walter Huston"</span>,
+  <span class="hljs-string">"winner"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-string">"year"</span>: <span class="hljs-number">1941</span>,
+  <span class="hljs-string">"onlyOscarsID"</span>: <span class="hljs-number">1142</span>,
+ },
+ {
+   <span class="hljs-string">"category"</span>:<span class="hljs-string">"ACTOR"</span>,
+   <span class="hljs-string">"entity"</span>:<span class="hljs-string">"Robert Montgomery"</span>,
+   <span class="hljs-string">"winner"</span>:<span class="hljs-literal">false</span>,
+   <span class="hljs-string">"year"</span>:<span class="hljs-number">1941</span>,
+   <span class="hljs-string">"onlyOscarsID"</span>:<span class="hljs-number">1143</span>
+ }
+</code></pre>
+
+</body>
+</html>
