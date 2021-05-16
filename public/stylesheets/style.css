@@ -2,6 +2,7 @@
   margin: 0px;
   padding: 0px;
 }
+
 body {
   background-color: #000 !important;
   overflow: auto;
@@ -10,6 +11,7 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
 img{
   padding-top: 35px;
   object-fit: none;
@@ -32,12 +34,12 @@ img{
   padding-bottom: 30px;
 
 }
+
 .position {
   max-width: 1200px;
   margin: 20px auto;
   text-align: center;
 }
-
 
 .wrapper {
   max-width: 800px;
@@ -135,6 +137,7 @@ img{
 .threeWay {
   margin: 100px 0;
 }
+
 .toggle_radio {
   position: relative;
   background: rgba(255,255,255,.1);
@@ -153,7 +156,6 @@ img{
 }
 .toggle_radio input[type=radio] {
   display: none;
-  /*position: fixed;*/
 }
 .toggle_radio label {
   font: 90%/1.618 "Source Sans Pro";
@@ -168,14 +170,10 @@ img{
   border-radius: 50px;
   cursor: pointer;
   z-index: 1;
-  /*background: rgba(0,0,0,.1);*/
   text-align: center;
-  /*margin: 0 2px;*/
-  /*background: blue;*/ /*make it blue*/
+
 }
 .toggle_option_slider {
-  /*display: none;*/
-  /*background: red;*/
   width: 100px;
   height: 20px;
   position: absolute;
@@ -194,102 +192,72 @@ img{
   background: rgba(80, 153, 3, 0.3);
   left: 3px;
 }
+
 #second_toggle:checked ~ .toggle_option_slider {
   background: rgba(255,255,255,.3);
   left: 109px;
 }
+
 #third_toggle:checked ~ .toggle_option_slider {
   background: rgba(236, 4, 37, 0.42);
   left: 215px;
 }
 
-#SpecificTitleID {
-  text-align: center;
-  font-family: "Futura";
-  margin: auto;
-  padding: 10px;
-  font-size: 50pt;
-  color: #b19330;
-  height: 200px;
+.head2 #otitle{
   background-image: linear-gradient(to right, transparent, #394431);
-
+  height: 220px;
+  width: 100vw;
+  padding-bottom: 20px;
 }
-
-#movieDataID {
-  font-size: 35pt;
-  font-family: "Futura";
-  color: #9d9999;
-  float: left;
-  padding-bottom: 25px;
-}
-
-#winner {
-  font-size: 15pt;
-  color: #F9E29C;
-  font-family: "Futura";
-  text-align: center;
-  position:relative;
-  left: 440px;
-  top: 150px;
-  border-right: 5px solid;
-  margin: 0;
-}
-
-#year {
-  font-size: 15pt;
-  color: #F9E29C;
-  font-family: "Futura";
-  text-align: center;
-  position:relative;
-  left: 550px;
-  bottom:510px;
-  border-left: 5px solid;
-  margin: 0;
-}
-
-#entity {
-  font-size: 15pt;
-  color: #F9E29C;
-  font-family: "Futura";
-  text-align: center;
-  position:relative;
-  font-style: oblique;
-  bottom: 500px;
-  left: 1400px;
-  margin: 0;
-}
-
-
-
 
 .btn {
-  border: none;
+  border-radius: 60px;
+  border-width: 2px;
+  border-color: transparent;
   background-color: inherit;
   padding: 14px 28px;
   position: relative;
   color: #b19330;
-  top: 80px;
-  right: 650px;
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   display: inline-block;
+  float: right;
+
 }
-.btn:hover {background: #eee;}
+
+.btn:hover {background: #394431;}
 .success {color: green;}
 .info {color: dodgerblue;}
 .warning {color: orange;}
 .danger {color: red;}
 .default {color: black;}
 
+#movieDataTable {
+  border-collapse: separate;
+  margin: auto;
+  border-spacing: 0 20px;
+  width: 100%;
+  padding-left: 45px;
+}
 
+th, #year-header, #category-header, #entity-header, #winner-header, #link-header {
+  text-align: center;
+  font-size: 25px;
+  color: #b19330;
+}
 
+td {
+  font-size: 20px;
+  max-width: 450px;
+  height: auto;
+  color: #7d7d7d;
+  text-align: center !important;
 
-
-
-/*div {*/
-/*  width: 300px;*/
-/*  border: 15px solid green;*/
-/*  padding: 50px;*/
-/*  margin: 20px;*/
-/*}*/
+}
+.wrapper2 {
+  width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
