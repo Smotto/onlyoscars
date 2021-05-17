@@ -25,7 +25,7 @@ router.get('/:category', function (req, res, next) {
         return movieDataList;
     }
 
-    res.render('specificPage', {filteringFindings: addFindings()});
+    res.render('specificPage', {title: "OnlyOscars - Results", filteringFindings: addFindings()});
 });
 
 module.exports = router;

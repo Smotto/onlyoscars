@@ -36,7 +36,7 @@ router.get('/', function (req, res, next) {
         if (req.query.year === undefined &&
             req.query.category === undefined &&
             req.query.winner === undefined) {
-            return;
+            return "";
         }
         /* Year AND Category ONLY */
         if (req.query.year !== undefined &&
@@ -100,9 +100,9 @@ router.get('/', function (req, res, next) {
         if (req.query.winner !== undefined &&
             req.query.year === undefined &&
             req.query.category === undefined) {
-            return;
+            return "";
         }
-        return;
+        return "";
     }
 
     /* Returns A Usable JSON STRING*/
@@ -110,7 +110,7 @@ router.get('/', function (req, res, next) {
     {
         let movieDataScuffedList = addFindings();
         if (movieDataScuffedList.length === 0) {
-            return;
+            return "";
         }
         else {
             movieDataScuffedList[0] = '[' + movieDataScuffedList[0];
@@ -119,7 +119,7 @@ router.get('/', function (req, res, next) {
         return movieDataScuffedList;
     }
 
-    res.render('specificPage', {title: 'Specific Page', filteringFindings: fixStringListForJSONCompatibility()});
+    res.render('specificPage', {title: 'OnlyOscars - Results', filteringFindings: fixStringListForJSONCompatibility()});
 });
 
 /* JSON ONLY Query String NO STRINGIFYING*/
@@ -159,7 +159,7 @@ router.get('/json/', function (req, res, next) {
         if (req.query.year === undefined &&
             req.query.category === undefined &&
             req.query.winner === undefined) {
-            return "";
+            return;
         }
         /* Year AND Category ONLY */
         if (req.query.year !== undefined &&
