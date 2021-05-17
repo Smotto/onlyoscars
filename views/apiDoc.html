@@ -7,387 +7,279 @@
 <body>
 <h1 id="csc-131---pied-piper">CSC 131 - Pied Piper</h1>
 <h2 id="movie-data">Movie Data</h2>
-<p>A JSON file containing the movie data is stored locally. Each movie has five keys if additional information is not
-    found using the OMDB API: category, winner, entity, year, and onlyOscarsID.</p>
-<pre class="sourceCode json"><code class="sourceCode json">{
-  <span class="dt">&quot;category&quot;</span>: <span class="er">string</span>,
-  <span class="dt">&quot;entity&quot;</span>: <span class="er">string</span>,
-  <span class="dt">&quot;winner&quot;</span>: <span class="er">boolean</span>,
-  <span class="dt">&quot;year&quot;</span>: <span class="er">number</span>,
-  <span class="dt">&quot;onlyOscarsID&quot;</span>: <span class="er">number</span>
-}</code></pre>
-<p>If additional movie data is found using the OMDB API, the object contains an additional nested object: omdbDATA,
-    containing the keys Tile, Year, Rated, Released, Runtime, Genre, Director, Writer, Actors, Plot, Language, Country,
-    Awards, Poster, an array of objects, Ratings, where each array contains object keys Source and Value, Metascore,
-    imdbRating, imdbVotes, imdbID, Type, DVD, BoxOffice, Production, Website, and Response.</p>
-<pre class="sourceCode json"><code class="sourceCode json">{
-  <span class="dt">&quot;category&quot;</span>: <span class="er">string</span>,
-  <span class="dt">&quot;entity&quot;</span>: <span class="er">string</span>,
-  <span class="dt">&quot;winner&quot;</span>: <span class="er">boolean</span>,
-  <span class="dt">&quot;year&quot;</span>: <span class="er">number</span>,
-  <span class="dt">&quot;onlyOscarsID&quot;</span>: <span class="er">number</span>,
-  <span class="dt">&quot;omdbData&quot;</span>: {
-    <span class="dt">&quot;Title&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Year&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Rated&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Released&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Runtime&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Genre&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Director&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Writer&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Actors&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Plot&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Language&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Country&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Awards&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Poster&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Ratings&quot;</span>: [
-      {
-        <span class="dt">&quot;Source&quot;</span>: <span class="er">string</span>,
-        <span class="dt">&quot;Value&quot;</span>: <span class="er">string</span>
-      }
-    ],
-    <span class="dt">&quot;Metascore&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;imdbRating&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;imdbVotes&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;imdbID&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Type&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;DVD&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;BoxOffice&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Production&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Website&quot;</span>: <span class="er">string</span>,
-    <span class="dt">&quot;Response&quot;</span>: <span class="er">string</span>
-  }
-}</code></pre>
-<p>In some cases, if additional movie information is not found using the OMDB API, the object contains an additional
-    nested object, omdbData, containing a Response and Error key.</p>
-<pre class="sourceCode json"><code class="sourceCode json">{
-  <span class="dt">&quot;category&quot;</span>: <span class="er">string</span>,
-  <span class="dt">&quot;entity&quot;</span>: <span class="er">string</span>,
-  <span class="dt">&quot;winner&quot;</span>: <span class="er">boolean</span>,
-  <span class="dt">&quot;year&quot;</span>: <span class="er">number</span>,
-  <span class="dt">&quot;onlyOscarsID&quot;</span>: <span class="er">number</span>,
-  <span class="dt">&quot;omdbData&quot;</span>: {
-    <span class="dt">&quot;Response&quot;</span>: <span class="er">boolean</span>,
-    <span class="dt">&quot;Error&quot;</span>: <span class="er">string</span>
-  }
-}</code></pre>
-<h1 id="root-url-is-httplocalhost3000">Root URL is <code>http://localhost:3000</code></h1>
-<h2 id="movie-data-winner">Movie Data: winner</h2>
-<h3 id="get-apijsonwinnertrue">GET <code>/api/json/?winner=true</code></h3>
-<p>This route returns every movie that is a winner by adding <code>/api/json/?winner=true</code> after the root URL.
-    This collection query returns the movies in a JSON format.</p>
-<p>Example: <code>/api/json/?winner=true</code></p>
-<pre class="sourceCode json"><code class="sourceCode json">  {
-    <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;SOUND RECORDING&quot;</span>,
-    <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;The Bells of St. Mary&#39;s&quot;</span>,
-    <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
-    <span class="dt">&quot;year&quot;</span>:<span class="dv">1945</span>,
-    <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">2012</span>,
-    <span class="dt">&quot;omdbData&quot;</span>:{
-      <span class="dt">&quot;Title&quot;</span>:<span class="st">&quot;The Bells of St. Mary&#39;s&quot;</span>,
-      <span class="dt">&quot;Year&quot;</span>:<span class="st">&quot;1945&quot;</span>,
-      <span class="dt">&quot;Rated&quot;</span>:<span class="st">&quot;Unrated&quot;</span>,
-      <span class="dt">&quot;Released&quot;</span>:<span class="st">&quot;21 Feb 1946&quot;</span>,
-      <span class="dt">&quot;Runtime&quot;</span>:<span class="st">&quot;126 min&quot;</span>,
-      <span class="dt">&quot;Genre&quot;</span>:<span class="st">&quot;Drama&quot;</span>,
-      <span class="dt">&quot;Director&quot;</span>:<span class="st">&quot;Leo McCarey&quot;</span>,
-      <span class="dt">&quot;Writer&quot;</span>:<span class="st">&quot;Dudley Nichols (screenplay), Leo McCarey (story)&quot;</span>,
-      <span class="dt">&quot;Actors&quot;</span>:<span class="st">&quot;Bing Crosby, Ingrid Bergman, Henry Travers, William Gargan&quot;</span>,
-      <span class="dt">&quot;Plot&quot;</span>:<span class="st">&quot;At a big city Catholic school, Father O&#39;Malley and Sister Benedict indulge in friendly rivalry, and succeed in extending the school through the gift of a building.&quot;</span>,
-      <span class="dt">&quot;Language&quot;</span>:<span class="st">&quot;English&quot;</span>,
-      <span class="dt">&quot;Country&quot;</span>:<span class="st">&quot;USA&quot;</span>,
-      <span class="dt">&quot;Awards&quot;</span>:<span class="st">&quot;Won 1 Oscar. Another 4 wins &amp; 8 nominations.&quot;</span>,
-      <span class="dt">&quot;Poster&quot;</span>:<span class="st">&quot;https://m.media-amazon.com/images/M/MV5BYWYyZjk5OGEtZTFhNS00OTg0LWJjNWEtYjlkOTQ1MjM1N2ZkXkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_SX300.jpg&quot;</span>,
-      <span class="dt">&quot;Ratings&quot;</span>:[
-        {
-          <span class="dt">&quot;Source&quot;</span>:<span class="st">&quot;Internet Movie Database&quot;</span>,
-          <span class="dt">&quot;Value&quot;</span>:<span class="st">&quot;7.3/10&quot;</span>
-        },
-        {
-          <span class="dt">&quot;Source&quot;</span>:<span class="st">&quot;Rotten Tomatoes&quot;</span>,
-          <span class="dt">&quot;Value&quot;</span>:<span class="st">&quot;85%&quot;</span>
-        }
-      ],
-      <span class="dt">&quot;Metascore&quot;</span>:<span class="st">&quot;N/A&quot;</span>,
-      <span class="dt">&quot;imdbRating&quot;</span>:<span class="st">&quot;7.3&quot;</span>,
-      <span class="dt">&quot;imdbVotes&quot;</span>:<span class="st">&quot;7,295&quot;</span>,
-      <span class="dt">&quot;imdbID&quot;</span>:<span class="st">&quot;tt0037536&quot;</span>,
-      <span class="dt">&quot;Type&quot;</span>:<span class="st">&quot;movie&quot;</span>,
-      <span class="dt">&quot;DVD&quot;</span>:<span class="st">&quot;09 Aug 2020&quot;</span>,
-      <span class="dt">&quot;BoxOffice&quot;</span>:<span class="st">&quot;$21,333,333&quot;</span>,
-      <span class="dt">&quot;Production&quot;</span>:<span class="st">&quot;Rainbow Productions&quot;</span>,
-      <span class="dt">&quot;Website&quot;</span>:<span class="st">&quot;N/A&quot;</span>,
-      <span class="dt">&quot;Response&quot;</span>:<span class="st">&quot;True&quot;</span>
-    }
-  }<span class="er">,</span>
+<p>A JSON file containing the movie data is stored locally. Each movie has five keys if additional information is not found using the OMDB API: category, winner, entity, year, and onlyOscarsID.</p>
+<pre class="sourceCode json"><code class="sourceCode json">[
   {
-    <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;SPECIAL EFFECTS&quot;</span>,
-    <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Wonder Man&quot;</span>,
-    <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
-    <span class="dt">&quot;year&quot;</span>:<span class="dv">1945</span>,
-    <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">2028</span>,
+    <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;string&quot;</span>,
+    <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;string&quot;</span>,
+    <span class="dt">&quot;winner&quot;</span>:<span class="st">&quot;boolean&quot;</span>,
+    <span class="dt">&quot;year&quot;</span>:<span class="st">&quot;number&quot;</span>,
+    <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="st">&quot;number&quot;</span>
+  }
+]</code></pre>
+<p>If additional movie data is found using the OMDB API, the object contains an additional nested object: omdbDATA, containing the keys Tile, Year, Rated, Released, Runtime, Genre, Director, Writer, Actors, Plot, Language, Country, Awards, Poster, an array of objects, Ratings, where each array contains object keys Source and Value, Metascore, imdbRating, imdbVotes, imdbID, Type, DVD, BoxOffice, Production, Website, and Response.</p>
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
+    <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;string&quot;</span>,
+    <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;string&quot;</span>,
+    <span class="dt">&quot;winner&quot;</span>:<span class="st">&quot;boolean&quot;</span>,
+    <span class="dt">&quot;year&quot;</span>:<span class="st">&quot;number&quot;</span>,
+    <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="st">&quot;number&quot;</span>,
     <span class="dt">&quot;omdbData&quot;</span>:{
-      <span class="dt">&quot;Title&quot;</span>:<span class="st">&quot;Wonder Man&quot;</span>,
-      <span class="dt">&quot;Year&quot;</span>:<span class="st">&quot;1945&quot;</span>,
-      <span class="dt">&quot;Rated&quot;</span>:<span class="st">&quot;Approved&quot;</span>,
-      <span class="dt">&quot;Released&quot;</span>:<span class="st">&quot;N/A&quot;</span>,
-      <span class="dt">&quot;Runtime&quot;</span>:<span class="st">&quot;98 min&quot;</span>,
-      <span class="dt">&quot;Genre&quot;</span>:<span class="st">&quot;Comedy, Fantasy, Musical&quot;</span>,
-      <span class="dt">&quot;Director&quot;</span>:<span class="st">&quot;H. Bruce Humberstone&quot;</span>,
-      <span class="dt">&quot;Writer&quot;</span>:<span class="st">&quot;Don Hartman (screenplay), Melville Shavelson (screenplay), Philip Rapp (screenplay), Jack Jevne (adaptation), Eddie Moran (adaptation), Arthur Sheekman (original story)&quot;</span>,
-      <span class="dt">&quot;Actors&quot;</span>:<span class="st">&quot;Danny Kaye, Virginia Mayo, Vera-Ellen, Donald Woods&quot;</span>,
-      <span class="dt">&quot;Plot&quot;</span>:<span class="st">&quot;After being murdered by gangsters, an exuberant nightclub entertainer returns as a ghost to persuade his meek twin brother to help bring his killers to justice.&quot;</span>,
-      <span class="dt">&quot;Language&quot;</span>:<span class="st">&quot;English, French&quot;</span>,
-      <span class="dt">&quot;Country&quot;</span>:<span class="st">&quot;USA&quot;</span>,
-      <span class="dt">&quot;Awards&quot;</span>:<span class="st">&quot;Won 1 Oscar. Another 4 nominations.&quot;</span>,
-      <span class="dt">&quot;Poster&quot;</span>:<span class="st">&quot;https://m.media-amazon.com/images/M/MV5BNGQ3ODUzNGEtNDRhNS00ZmZiLTk0YWYtZDJlYTExZmU1MGQ3XkEyXkFqcGdeQXVyNjMwMjk0MTQ@._V1_SX300.jpg&quot;</span>,
+      <span class="dt">&quot;Title&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Year&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Rated&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Released&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Runtime&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Genre&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Director&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Writer&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Actors&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Plot&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Language&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Country&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Awards&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Poster&quot;</span>:<span class="st">&quot;string&quot;</span>,
       <span class="dt">&quot;Ratings&quot;</span>:[
         {
-          <span class="dt">&quot;Source&quot;</span>:<span class="st">&quot;Internet Movie Database&quot;</span>,
-          <span class="dt">&quot;Value&quot;</span>:<span class="st">&quot;7.0/10&quot;</span>
-        },
-        {
-          <span class="dt">&quot;Source&quot;</span>:<span class="st">&quot;Rotten Tomatoes&quot;</span>,
-          <span class="dt">&quot;Value&quot;</span>:<span class="st">&quot;100%&quot;</span>
+          <span class="dt">&quot;Source&quot;</span>:<span class="st">&quot;string&quot;</span>,
+          <span class="dt">&quot;Value&quot;</span>:<span class="st">&quot;string&quot;</span>
         }
       ],
-      <span class="dt">&quot;Metascore&quot;</span>:<span class="st">&quot;N/A&quot;</span>,
-      <span class="dt">&quot;imdbRating&quot;</span>:<span class="st">&quot;7.0&quot;</span>,
-      <span class="dt">&quot;imdbVotes&quot;</span>:<span class="st">&quot;1,963&quot;</span>,
-      <span class="dt">&quot;imdbID&quot;</span>:<span class="st">&quot;tt0038260&quot;</span>,
-      <span class="dt">&quot;Type&quot;</span>:<span class="st">&quot;movie&quot;</span>,
-      <span class="dt">&quot;DVD&quot;</span>:<span class="st">&quot;N/A&quot;</span>,
-      <span class="dt">&quot;BoxOffice&quot;</span>:<span class="st">&quot;N/A&quot;</span>,
-      <span class="dt">&quot;Production&quot;</span>:<span class="st">&quot;Samuel Goldwyn Company&quot;</span>,
-      <span class="dt">&quot;Website&quot;</span>:<span class="st">&quot;N/A&quot;</span>,
-      <span class="dt">&quot;Response&quot;</span>:<span class="st">&quot;True&quot;</span>
+      <span class="dt">&quot;Metascore&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;imdbRating&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;imdbVotes&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;imdbID&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Type&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;DVD&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;BoxOffice&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Production&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Website&quot;</span>:<span class="st">&quot;string&quot;</span>,
+      <span class="dt">&quot;Response&quot;</span>:<span class="st">&quot;string&quot;</span>
     }
-  }</code></pre>
+  }
+]</code></pre>
+<p>In some cases, if additional movie information is not found using the OMDB API, the object contains an additional nested object, omdbData, containing a Response and Error key.</p>
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
+    <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;string&quot;</span>,
+    <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;string&quot;</span>,
+    <span class="dt">&quot;winner&quot;</span>:<span class="st">&quot;boolean&quot;</span>,
+    <span class="dt">&quot;year&quot;</span>:<span class="st">&quot;number&quot;</span>,
+    <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="st">&quot;number&quot;</span>,
+    <span class="dt">&quot;omdbData&quot;</span>:{
+      <span class="dt">&quot;Response&quot;</span>:<span class="st">&quot;boolean&quot;</span>,
+      <span class="dt">&quot;Error&quot;</span>:<span class="st">&quot;string&quot;</span>
+    }
+  }
+]</code></pre>
+<h1 id="root-url-is-httplocalhost3000">Root URL is <code>http://localhost:3000</code></h1>
 <h2 id="movie-data-category">Movie Data: category</h2>
 <h3 id="get-apijsoncategory">GET <code>/api/json/?category=</code></h3>
-<p>This route returns every movie of a category by adding <code>/api/json/?category=CATEGORY%HERE</code>, replacing
-    <code>CATEGORY%20HERE</code> with the chosen category, (<code>%20</code> for spaces), after the root URL. This
-    collection query returns the movies in a JSON format.</p>
+<p>This route returns every movie of a category by adding <code>/api/json/?category=CATEGORY%HERE</code>, replacing <code>CATEGORY%20HERE</code> with the chosen category, (<code>%20</code> for spaces), after the root URL. This collection query returns the movies in a JSON format.</p>
 <p>Example: <code>/api/json/?category=ACTRESS%20IN%20A%20SUPPORTING%20ROLE</code></p>
-<p><code>json { &quot;category&quot;:&quot;ACTRESS IN A SUPPORTING ROLE&quot;, &quot;entity&quot;:&quot;Beulah
-    Bondi&quot;,
-    &quot;winner&quot;:false, &quot;year&quot;:1936, &quot;onlyOscarsID&quot;:453, &quot;omdbData&quot;:{ &quot;Response&quot;:&quot;False&quot;,
-    &quot;Error&quot;:&quot;Movie not found!&quot; } }, { &quot;category&quot;:&quot;ACTRESS IN A SUPPORTING
-    ROLE&quot;,
-    &quot;entity&quot;:&quot;Kate Winslet&quot;, &quot;winner&quot;:false, &quot;year&quot;:2001, &quot;onlyOscarsID&quot;:8804,
-    &quot;omdbData&quot;:{ &quot;Title&quot;:&quot;Kate Winslet: What If&quot;, &quot;Year&quot;:&quot;2001&quot;,
-    &quot;Rated&quot;:&quot;N/A&quot;, &quot;Released&quot;:&quot;14 Sep 2001&quot;, &quot;Runtime&quot;:&quot;4
-    min&quot;,
-    &quot;Genre&quot;:&quot;Short, Music&quot;, &quot;Director&quot;:&quot;Paul Donnellon&quot;, &quot;Writer&quot;:&quot;N/A&quot;,
-    &quot;Actors&quot;:&quot;Kate Winslet&quot;, &quot;Plot&quot;:&quot;N/A&quot;, &quot;Language&quot;:&quot;N/A&quot;,
-    &quot;Country&quot;:&quot;UK&quot;, &quot;Awards&quot;:&quot;N/A&quot;, &quot;Poster&quot;:&quot;https://m.media-amazon.com/images/M/MV5BZGE4ZmNjNDQtYmE2My00MTg3LTg3NDEtZTA2MzhhMTk2MDlmXkEyXkFqcGdeQXVyNTgzNDU0ODY@._V1_SX300.jpg&quot;,
-    &quot;Ratings&quot;:[ { &quot;Source&quot;:&quot;Internet Movie Database&quot;, &quot;Value&quot;:&quot;8.2/10&quot;
-    } ], &quot;Metascore&quot;:&quot;N/A&quot;, &quot;imdbRating&quot;:&quot;8.2&quot;, &quot;imdbVotes&quot;:&quot;25&quot;,
-    &quot;imdbID&quot;:&quot;tt5617492&quot;, &quot;Type&quot;:&quot;movie&quot;, &quot;DVD&quot;:&quot;N/A&quot;,
-    &quot;BoxOffice&quot;:&quot;N/A&quot;, &quot;Production&quot;:&quot;N/A&quot;, &quot;Website&quot;:&quot;N/A&quot;,
-    &quot;Response&quot;:&quot;True&quot; } }</code></p>
+<p><code>json [       {         &quot;category&quot;:&quot;ACTRESS IN A SUPPORTING ROLE&quot;,         &quot;entity&quot;:&quot;Beulah Bondi&quot;,         &quot;winner&quot;:false,         &quot;year&quot;:1936,         &quot;onlyOscarsID&quot;:453,         &quot;omdbData&quot;:{           &quot;Response&quot;:&quot;False&quot;,           &quot;Error&quot;:&quot;Movie not found!&quot;         }       },       {         &quot;category&quot;:&quot;ACTRESS IN A SUPPORTING ROLE&quot;,         &quot;entity&quot;:&quot;Kate Winslet&quot;,         &quot;winner&quot;:false,         &quot;year&quot;:2001,         &quot;onlyOscarsID&quot;:8804,         &quot;omdbData&quot;:{           &quot;Title&quot;:&quot;Kate Winslet: What If&quot;,           &quot;Year&quot;:&quot;2001&quot;,           &quot;Rated&quot;:&quot;N/A&quot;,           &quot;Released&quot;:&quot;14 Sep 2001&quot;,           &quot;Runtime&quot;:&quot;4 min&quot;,           &quot;Genre&quot;:&quot;Short, Music&quot;,           &quot;Director&quot;:&quot;Paul Donnellon&quot;,           &quot;Writer&quot;:&quot;N/A&quot;,           &quot;Actors&quot;:&quot;Kate Winslet&quot;,           &quot;Plot&quot;:&quot;N/A&quot;,           &quot;Language&quot;:&quot;N/A&quot;,           &quot;Country&quot;:&quot;UK&quot;,           &quot;Awards&quot;:&quot;N/A&quot;,           &quot;Poster&quot;:&quot;https://m.media-amazon.com/images/M/MV5BZGE4ZmNjNDQtYmE2My00MTg3LTg3NDEtZTA2MzhhMTk2MDlmXkEyXkFqcGdeQXVyNTgzNDU0ODY@._V1_SX300.jpg&quot;,           &quot;Ratings&quot;:[             {               &quot;Source&quot;:&quot;Internet Movie Database&quot;,               &quot;Value&quot;:&quot;8.2/10&quot;             }           ],           &quot;Metascore&quot;:&quot;N/A&quot;,           &quot;imdbRating&quot;:&quot;8.2&quot;,           &quot;imdbVotes&quot;:&quot;25&quot;,           &quot;imdbID&quot;:&quot;tt5617492&quot;,           &quot;Type&quot;:&quot;movie&quot;,           &quot;DVD&quot;:&quot;N/A&quot;,           &quot;BoxOffice&quot;:&quot;N/A&quot;,           &quot;Production&quot;:&quot;N/A&quot;,           &quot;Website&quot;:&quot;N/A&quot;,           &quot;Response&quot;:&quot;True&quot;         }       } ]</code></p>
 <h2 id="movie-data-year">Movie Data: year</h2>
 <h3 id="get-apiyear">GET <code>/api/?year=</code></h3>
-<p>This route returns every movie of a year by adding <code>/api/json/?year=0000</code>, replacing <code>0000</code>
-    with the chosen year after the root URL. This collection query returns the movies in a JSON format.</p>
+<p>This route returns every movie of a year by adding <code>/api/json/?year=0000</code>, replacing <code>0000</code> with the chosen year after the root URL. This collection query returns the movies in a JSON format.</p>
 <p>Example: <code>/api/year/?year=1945</code></p>
-<pre class="sourceCode json"><code class="sourceCode json">  {
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ACTOR&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Bing Crosby&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1945</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">1888</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ACTOR&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Gene Kelly&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1945</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">1889</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ACTOR&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Ray Milland&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1945</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">1890</span>
-  }</code></pre>
+  }
+]</code></pre>
 <h2 id="movie-data-category-and-winner">Movie Data: category and winner</h2>
 <h3 id="get-apicategory0000winnertrue">GET <code>/api/?category=0000&amp;winner=true</code></h3>
-<p>This route returns every movie by the category and winner by adding <code>/api/?category=0000&amp;winner=true</code>,
-    replacing <code>0000</code> with appropriate category and <code>true</code> indicating Oscar winners. This
-    collection query returns the movies in a JSON format.</p>
+<p>This route returns every movie by the category and winner by adding <code>/api/?category=0000&amp;winner=true</code>, replacing <code>0000</code> with appropriate category and <code>true</code> indicating Oscar winners. This collection query returns the movies in a JSON format.</p>
 <p>Example: <code>/api/?category=WRITING&amp;winner=true</code></p>
-<pre class="sourceCode json"><code class="sourceCode json">  {
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;WRITING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Hans Kraly&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1928</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">70</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;WRITING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;The Big House&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1929</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">111</span>
-  }</code></pre>
+  }
+]</code></pre>
 <h2 id="movie-data-category-and-not-winner">Movie Data: category and not winner</h2>
 <h3 id="get-apicategory0000winnerfalse">GET <code>/api/?category=0000&amp;winner=false</code></h3>
-<p>This route returns every movie by the category and not winner by adding
-    <code>/api/?category=0000&amp;winner=false</code>, replacing <code>0000</code> with appropriate category and <code>false</code>
-    indicating Oscars that did not win. This collection query returns the movies in a JSON format.</p>
+<p>This route returns every movie by the category and not winner by adding <code>/api/?category=0000&amp;winner=false</code>, replacing <code>0000</code> with appropriate category and <code>false</code> indicating Oscars that did not win. This collection query returns the movies in a JSON format.</p>
 <p>Example: <code>/api/?category=DIRECTING&amp;winner=false</code></p>
-<pre class="sourceCode json"><code class="sourceCode json">  {
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;DIRECTING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Lionel Barrymore&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1928</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">56</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;DIRECTING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Harry Beaumont&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1928</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">57</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;DIRECTING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Irving Cummings&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1928</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">58</span>
-  }</code></pre>
+  }
+]</code></pre>
 <h2 id="movie-data-category-and-year">Movie Data: category and year</h2>
 <h3 id="get-apicategory0000year----">GET <code>/api/category/0000/year/----</code></h3>
-<p>This route returns every movie by the category and year by adding <code>/api/category/0000/year/---</code>, replacing
-    <code>0000</code> with appropriate category and <code>----</code> with year. This collection query returns the
-    movies in a JSON format.</p>
+<p>This route returns every movie by the category and year by adding <code>/api/category/0000/year/---</code>, replacing <code>0000</code> with appropriate category and <code>----</code> with year. This collection query returns the movies in a JSON format.</p>
 <p>Example: <code>/api/category/DIRECTING/year/1930</code></p>
-<pre class="sourceCode json"><code class="sourceCode json">  {
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;DIRECTING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Cimarron&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1930</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">135</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;DIRECTING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;A Free Soul&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1930</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">136</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;DIRECTING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;The Front Page&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1930</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">137</span>
-  }</code></pre>
+  }
+]</code></pre>
 <h2 id="movie-data-category-year-and-winner">Movie Data: category, year, and winner</h2>
 <h3 id="get-apicategory0000year----winnertrue">GET <code>/api/category/0000/year/----/winner/true</code></h3>
-<p>This route returns a movie by the category, year and winner by adding
-    <code>/api/category/0000/year/----/winner/true</code>, replacing <code>0000</code> with appropriate category, <code>----</code>
-    with year and <code>true</code> which indicates Oscar winners. This singleton parameterized search returns the movie
-    in a JSON format.</p>
+<p>This route returns a movie by the category, year and winner by adding <code>/api/category/0000/year/----/winner/true</code>, replacing <code>0000</code> with appropriate category, <code>----</code> with year and <code>true</code> which indicates Oscar winners. This singleton parameterized search returns the movie in a JSON format.</p>
 <p>Example: <code>/api/category/CINEMATOGRAPHY/year/1931/winner/true</code></p>
-<pre class="sourceCode json"><code class="sourceCode json">{
-  <span class="dt">&quot;category&quot;</span>: <span class="st">&quot;CINEMATOGRAPHY&quot;</span>,
-  <span class="dt">&quot;entity&quot;</span>: <span class="st">&quot;Shanghai Express&quot;</span>,
-  <span class="dt">&quot;winner&quot;</span>: <span class="dv">true</span>,
-  <span class="dt">&quot;year&quot;</span>: <span class="dv">1931</span>,
-  <span class="dt">&quot;onlyOscarsID&quot;</span>: <span class="dv">176</span>
-}</code></pre>
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
+    <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;CINEMATOGRAPHY&quot;</span>,
+    <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Shanghai Express&quot;</span>,
+    <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
+    <span class="dt">&quot;year&quot;</span>:<span class="dv">1931</span>,
+    <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">176</span>
+  }
+]</code></pre>
 <h2 id="movie-data-category-year-and-not-winner">Movie Data: category, year, and not winner</h2>
 <h3 id="get-apicategory0000year----winnerfalse">GET <code>/api/category/0000/year/----/winner/false</code></h3>
-<p>This route returns every movie by the category, year and not winner by adding <code>/api/category/0000/year/----/winner/false</code>,
-    replacing <code>0000</code> with appropriate category, <code>----</code> with year and <code>false</code> which
-    indicates Oscars that did not win. This returns a collection of movies in a JSON format.</p>
+<p>This route returns every movie by the category, year and not winner by adding <code>/api/category/0000/year/----/winner/false</code>, replacing <code>0000</code> with appropriate category, <code>----</code> with year and <code>false</code> which indicates Oscars that did not win. This returns a collection of movies in a JSON format.</p>
 <p>Example: <code>/api/category/DIRECTING/year/1935/winner/false</code></p>
-<pre class="sourceCode json"><code class="sourceCode json">  {
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;DIRECTING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Captain Blood&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1935</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">373</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;DIRECTING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;The Lives of a Bengal Lancer&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1935</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">375</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;DIRECTING&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Mutiny on the Bounty&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1935</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">376</span>
-  }</code></pre>
+  }
+]</code></pre>
 <h2 id="movie-data-year-and-winner">Movie Data: year and winner</h2>
 <h3 id="get-apiyear----winnertrue">GET <code>/api/?year=----&amp;winner=true</code></h3>
-<p>This route returns every movie by the year and winner by adding <code>/api/?year=----&amp;winner=true</code>,
-    replacing <code>----</code> with year and <code>true</code> indicating Oscar winners. This collection query returns
-    the movies in a JSON format.</p>
+<p>This route returns every movie by the year and winner by adding <code>/api/?year=----&amp;winner=true</code>, replacing <code>----</code> with year and <code>true</code> indicating Oscar winners. This collection query returns the movies in a JSON format.</p>
 <p>Example: <code>/api/?year=1935&amp;winner=true</code></p>
-<pre class="sourceCode json"><code class="sourceCode json">  {
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ACTOR&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Victor McLaglen&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1935</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">346</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ACTRESS&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Bette Davis&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1935</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">351</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ART DIRECTION&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;The Dark Angel&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1935</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">355</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ASSISTANT DIRECTOR&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;The Lives of a Bengal Lancer&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">true</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1935</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">360</span>
-  }</code></pre>
+  }
+]</code></pre>
 <h2 id="movie-data-year-and-not-winner">Movie Data: year and not winner</h2>
 <h3 id="get-apiyear----winnerfalse">GET <code>/api/?year=----&amp;winner=false</code></h3>
-<p>This route returns every movie by the year and not winner by adding <code>/api/?year=----&amp;winner=false</code>,
-    replacing <code>----</code> with year and <code>false</code> indicating Oscar not winners. This collection query
-    returns the movies in a JSON format.</p>
+<p>This route returns every movie by the year and not winner by adding <code>/api/?year=----&amp;winner=false</code>, replacing <code>----</code> with year and <code>false</code> indicating Oscar not winners. This collection query returns the movies in a JSON format.</p>
 <p>Example: <code>/api/?year=1941&amp;winner=false</code></p>
-<pre class="sourceCode json"><code class="sourceCode json">  {
+<pre class="sourceCode json"><code class="sourceCode json">[
+  {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ACTOR&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Cary Grant&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1941</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">1141</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ACTOR&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Walter Huston&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1941</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">1142</span>
-  }<span class="er">,</span>
+  },
   {
     <span class="dt">&quot;category&quot;</span>:<span class="st">&quot;ACTOR&quot;</span>,
     <span class="dt">&quot;entity&quot;</span>:<span class="st">&quot;Robert Montgomery&quot;</span>,
     <span class="dt">&quot;winner&quot;</span>:<span class="dv">false</span>,
     <span class="dt">&quot;year&quot;</span>:<span class="dv">1941</span>,
     <span class="dt">&quot;onlyOscarsID&quot;</span>:<span class="dv">1143</span>
-  }</code></pre>
+  }
+]</code></pre>
 </body>
 </html>

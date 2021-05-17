@@ -6,13 +6,15 @@ A JSON file containing the movie data is stored locally. Each movie has five key
 using the OMDB API: category, winner, entity, year, and onlyOscarsID.
 
 ```json
-{
-  "category": string,
-  "entity": string,
-  "winner": boolean,
-  "year": number,
-  "onlyOscarsID": number
-}
+[
+  {
+    "category":"string",
+    "entity":"string",
+    "winner":"boolean",
+    "year":"number",
+    "onlyOscarsID":"number"
+  }
+]
 ```
 
 If additional movie data is found using the OMDB API, the object contains an additional nested object: omdbDATA,
@@ -21,163 +23,69 @@ Awards, Poster, an array of objects, Ratings, where each array contains object k
 imdbRating, imdbVotes, imdbID, Type, DVD, BoxOffice, Production, Website, and Response.
 
 ```json
-{
-  "category": string,
-  "entity": string,
-  "winner": boolean,
-  "year": number,
-  "onlyOscarsID": number,
-  "omdbData": {
-    "Title": string,
-    "Year": string,
-    "Rated": string,
-    "Released": string,
-    "Runtime": string,
-    "Genre": string,
-    "Director": string,
-    "Writer": string,
-    "Actors": string,
-    "Plot": string,
-    "Language": string,
-    "Country": string,
-    "Awards": string,
-    "Poster": string,
-    "Ratings": [
-      {
-        "Source": string,
-        "Value": string
-      }
-    ],
-    "Metascore": string,
-    "imdbRating": string,
-    "imdbVotes": string,
-    "imdbID": string,
-    "Type": string,
-    "DVD": string,
-    "BoxOffice": string,
-    "Production": string,
-    "Website": string,
-    "Response": string
+[
+  {
+    "category":"string",
+    "entity":"string",
+    "winner":"boolean",
+    "year":"number",
+    "onlyOscarsID":"number",
+    "omdbData":{
+      "Title":"string",
+      "Year":"string",
+      "Rated":"string",
+      "Released":"string",
+      "Runtime":"string",
+      "Genre":"string",
+      "Director":"string",
+      "Writer":"string",
+      "Actors":"string",
+      "Plot":"string",
+      "Language":"string",
+      "Country":"string",
+      "Awards":"string",
+      "Poster":"string",
+      "Ratings":[
+        {
+          "Source":"string",
+          "Value":"string"
+        }
+      ],
+      "Metascore":"string",
+      "imdbRating":"string",
+      "imdbVotes":"string",
+      "imdbID":"string",
+      "Type":"string",
+      "DVD":"string",
+      "BoxOffice":"string",
+      "Production":"string",
+      "Website":"string",
+      "Response":"string"
+    }
   }
-}
+]
 ```
 
 In some cases, if additional movie information is not found using the OMDB API, the object contains an additional nested
 object, omdbData, containing a Response and Error key.
 
 ```json
-{
-  "category": string,
-  "entity": string,
-  "winner": boolean,
-  "year": number,
-  "onlyOscarsID": number,
-  "omdbData": {
-    "Response": boolean,
-    "Error": string
+[
+  {
+    "category":"string",
+    "entity":"string",
+    "winner":"boolean",
+    "year":"number",
+    "onlyOscarsID":"number",
+    "omdbData":{
+      "Response":"boolean",
+      "Error":"string"
+    }
   }
-}
+]
 ```
 
 # Root URL is `http://localhost:3000`
-
-## Movie Data: winner
-
-### GET `/api/json/?winner=true`
-
-This route returns every movie that is a winner by adding `/api/json/?winner=true` after the root URL. This collection
-query returns the movies in a JSON format.
-
-Example: `/api/json/?winner=true`
-
-```json
-  {
-    "category":"SOUND RECORDING",
-    "entity":"The Bells of St. Mary's",
-    "winner":true,
-    "year":1945,
-    "onlyOscarsID":2012,
-    "omdbData":{
-      "Title":"The Bells of St. Mary's",
-      "Year":"1945",
-      "Rated":"Unrated",
-      "Released":"21 Feb 1946",
-      "Runtime":"126 min",
-      "Genre":"Drama",
-      "Director":"Leo McCarey",
-      "Writer":"Dudley Nichols (screenplay), Leo McCarey (story)",
-      "Actors":"Bing Crosby, Ingrid Bergman, Henry Travers, William Gargan",
-      "Plot":"At a big city Catholic school, Father O'Malley and Sister Benedict indulge in friendly rivalry, and succeed in extending the school through the gift of a building.",
-      "Language":"English",
-      "Country":"USA",
-      "Awards":"Won 1 Oscar. Another 4 wins & 8 nominations.",
-      "Poster":"https://m.media-amazon.com/images/M/MV5BYWYyZjk5OGEtZTFhNS00OTg0LWJjNWEtYjlkOTQ1MjM1N2ZkXkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_SX300.jpg",
-      "Ratings":[
-        {
-          "Source":"Internet Movie Database",
-          "Value":"7.3/10"
-        },
-        {
-          "Source":"Rotten Tomatoes",
-          "Value":"85%"
-        }
-      ],
-      "Metascore":"N/A",
-      "imdbRating":"7.3",
-      "imdbVotes":"7,295",
-      "imdbID":"tt0037536",
-      "Type":"movie",
-      "DVD":"09 Aug 2020",
-      "BoxOffice":"$21,333,333",
-      "Production":"Rainbow Productions",
-      "Website":"N/A",
-      "Response":"True"
-    }
-  },
-  {
-    "category":"SPECIAL EFFECTS",
-    "entity":"Wonder Man",
-    "winner":true,
-    "year":1945,
-    "onlyOscarsID":2028,
-    "omdbData":{
-      "Title":"Wonder Man",
-      "Year":"1945",
-      "Rated":"Approved",
-      "Released":"N/A",
-      "Runtime":"98 min",
-      "Genre":"Comedy, Fantasy, Musical",
-      "Director":"H. Bruce Humberstone",
-      "Writer":"Don Hartman (screenplay), Melville Shavelson (screenplay), Philip Rapp (screenplay), Jack Jevne (adaptation), Eddie Moran (adaptation), Arthur Sheekman (original story)",
-      "Actors":"Danny Kaye, Virginia Mayo, Vera-Ellen, Donald Woods",
-      "Plot":"After being murdered by gangsters, an exuberant nightclub entertainer returns as a ghost to persuade his meek twin brother to help bring his killers to justice.",
-      "Language":"English, French",
-      "Country":"USA",
-      "Awards":"Won 1 Oscar. Another 4 nominations.",
-      "Poster":"https://m.media-amazon.com/images/M/MV5BNGQ3ODUzNGEtNDRhNS00ZmZiLTk0YWYtZDJlYTExZmU1MGQ3XkEyXkFqcGdeQXVyNjMwMjk0MTQ@._V1_SX300.jpg",
-      "Ratings":[
-        {
-          "Source":"Internet Movie Database",
-          "Value":"7.0/10"
-        },
-        {
-          "Source":"Rotten Tomatoes",
-          "Value":"100%"
-        }
-      ],
-      "Metascore":"N/A",
-      "imdbRating":"7.0",
-      "imdbVotes":"1,963",
-      "imdbID":"tt0038260",
-      "Type":"movie",
-      "DVD":"N/A",
-      "BoxOffice":"N/A",
-      "Production":"Samuel Goldwyn Company",
-      "Website":"N/A",
-      "Response":"True"
-    }
-  }
-```
 
 ## Movie Data: category
 
@@ -190,56 +98,58 @@ format.
 Example: `/api/json/?category=ACTRESS%20IN%20A%20SUPPORTING%20ROLE`
 
   ```json
-  {
-    "category":"ACTRESS IN A SUPPORTING ROLE",
-    "entity":"Beulah Bondi",
-    "winner":false,
-    "year":1936,
-    "onlyOscarsID":453,
-    "omdbData":{
-      "Response":"False",
-      "Error":"Movie not found!"
-    }
-  },
-  {
-    "category":"ACTRESS IN A SUPPORTING ROLE",
-    "entity":"Kate Winslet",
-    "winner":false,
-    "year":2001,
-    "onlyOscarsID":8804,
-    "omdbData":{
-      "Title":"Kate Winslet: What If",
-      "Year":"2001",
-      "Rated":"N/A",
-      "Released":"14 Sep 2001",
-      "Runtime":"4 min",
-      "Genre":"Short, Music",
-      "Director":"Paul Donnellon",
-      "Writer":"N/A",
-      "Actors":"Kate Winslet",
-      "Plot":"N/A",
-      "Language":"N/A",
-      "Country":"UK",
-      "Awards":"N/A",
-      "Poster":"https://m.media-amazon.com/images/M/MV5BZGE4ZmNjNDQtYmE2My00MTg3LTg3NDEtZTA2MzhhMTk2MDlmXkEyXkFqcGdeQXVyNTgzNDU0ODY@._V1_SX300.jpg",
-      "Ratings":[
-        {
-          "Source":"Internet Movie Database",
-          "Value":"8.2/10"
+[
+      {
+        "category":"ACTRESS IN A SUPPORTING ROLE",
+        "entity":"Beulah Bondi",
+        "winner":false,
+        "year":1936,
+        "onlyOscarsID":453,
+        "omdbData":{
+          "Response":"False",
+          "Error":"Movie not found!"
         }
-      ],
-      "Metascore":"N/A",
-      "imdbRating":"8.2",
-      "imdbVotes":"25",
-      "imdbID":"tt5617492",
-      "Type":"movie",
-      "DVD":"N/A",
-      "BoxOffice":"N/A",
-      "Production":"N/A",
-      "Website":"N/A",
-      "Response":"True"
-    }
-  }
+      },
+      {
+        "category":"ACTRESS IN A SUPPORTING ROLE",
+        "entity":"Kate Winslet",
+        "winner":false,
+        "year":2001,
+        "onlyOscarsID":8804,
+        "omdbData":{
+          "Title":"Kate Winslet: What If",
+          "Year":"2001",
+          "Rated":"N/A",
+          "Released":"14 Sep 2001",
+          "Runtime":"4 min",
+          "Genre":"Short, Music",
+          "Director":"Paul Donnellon",
+          "Writer":"N/A",
+          "Actors":"Kate Winslet",
+          "Plot":"N/A",
+          "Language":"N/A",
+          "Country":"UK",
+          "Awards":"N/A",
+          "Poster":"https://m.media-amazon.com/images/M/MV5BZGE4ZmNjNDQtYmE2My00MTg3LTg3NDEtZTA2MzhhMTk2MDlmXkEyXkFqcGdeQXVyNTgzNDU0ODY@._V1_SX300.jpg",
+          "Ratings":[
+            {
+              "Source":"Internet Movie Database",
+              "Value":"8.2/10"
+            }
+          ],
+          "Metascore":"N/A",
+          "imdbRating":"8.2",
+          "imdbVotes":"25",
+          "imdbID":"tt5617492",
+          "Type":"movie",
+          "DVD":"N/A",
+          "BoxOffice":"N/A",
+          "Production":"N/A",
+          "Website":"N/A",
+          "Response":"True"
+        }
+      }
+]
   ```
 
 ## Movie Data: year
@@ -252,6 +162,7 @@ the root URL. This collection query returns the movies in a JSON format.
 Example: `/api/year/?year=1945`
 
 ```json
+[
   {
     "category":"ACTOR",
     "entity":"Bing Crosby",
@@ -273,6 +184,7 @@ Example: `/api/year/?year=1945`
     "year":1945,
     "onlyOscarsID":1890
   }
+]
 ```
 
 ## Movie Data: category and winner
@@ -286,6 +198,7 @@ format.
 Example: `/api/?category=WRITING&winner=true`
 
 ```json
+[
   {
     "category":"WRITING",
     "entity":"Hans Kraly",
@@ -300,6 +213,7 @@ Example: `/api/?category=WRITING&winner=true`
     "year":1929,
     "onlyOscarsID":111
   }
+]
 ```
 
 ## Movie Data: category and not winner
@@ -313,6 +227,7 @@ the movies in a JSON format.
 Example: `/api/?category=DIRECTING&winner=false`
 
 ```json
+[
   {
     "category":"DIRECTING",
     "entity":"Lionel Barrymore",
@@ -334,6 +249,7 @@ Example: `/api/?category=DIRECTING&winner=false`
     "year":1928,
     "onlyOscarsID":58
   }
+]
 ```
 
 ## Movie Data: category and year
@@ -346,6 +262,7 @@ appropriate category and `----` with year. This collection query returns the mov
 Example: `/api/category/DIRECTING/year/1930`
 
 ```json
+[
   {
     "category":"DIRECTING",
     "entity":"Cimarron",
@@ -367,6 +284,7 @@ Example: `/api/category/DIRECTING/year/1930`
     "year":1930,
     "onlyOscarsID":137
   }
+]
 ```
 
 ## Movie Data: category, year, and winner
@@ -380,13 +298,15 @@ parameterized search returns the movie in a JSON format.
 Example: `/api/category/CINEMATOGRAPHY/year/1931/winner/true`
 
 ```json
-{
-  "category": "CINEMATOGRAPHY",
-  "entity": "Shanghai Express",
-  "winner": true,
-  "year": 1931,
-  "onlyOscarsID": 176
-}
+[
+  {
+    "category":"CINEMATOGRAPHY",
+    "entity":"Shanghai Express",
+    "winner":true,
+    "year":1931,
+    "onlyOscarsID":176
+  }
+]
 ```
 
 ## Movie Data: category, year, and not winner
@@ -400,6 +320,7 @@ and `false` which indicates Oscars that did not win. This returns a collection o
 Example: `/api/category/DIRECTING/year/1935/winner/false`
 
 ```json
+[
   {
     "category":"DIRECTING",
     "entity":"Captain Blood",
@@ -421,6 +342,7 @@ Example: `/api/category/DIRECTING/year/1935/winner/false`
     "year":1935,
     "onlyOscarsID":376
   }
+]
 ```
 
 ## Movie Data: year and winner
@@ -433,6 +355,7 @@ year and `true` indicating Oscar winners. This collection query returns the movi
 Example: `/api/?year=1935&winner=true`
 
 ```json
+[ 
   {
     "category":"ACTOR",
     "entity":"Victor McLaglen",
@@ -461,6 +384,7 @@ Example: `/api/?year=1935&winner=true`
     "year":1935,
     "onlyOscarsID":360
   }
+]
 ```
 
 ## Movie Data: year and not winner
@@ -473,6 +397,7 @@ with year and `false` indicating Oscar not winners. This collection query return
 Example: `/api/?year=1941&winner=false`
 
 ```json
+[  
   {
     "category":"ACTOR",
     "entity":"Cary Grant",
@@ -494,6 +419,7 @@ Example: `/api/?year=1941&winner=false`
     "year":1941,
     "onlyOscarsID":1143
   }
+]
 ```
 
 
