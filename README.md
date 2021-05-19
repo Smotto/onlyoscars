@@ -74,6 +74,7 @@ You need the following:
 * NodeJs
 * Git
 * $1 for omdbAPI if you don't have the json file. http://www.omdbapi.com/
+* Replace the API KEY on line 157 of app.js
 
 ### Installation
 
